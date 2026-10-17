@@ -1,0 +1,86 @@
+[
+  {
+    "map": 0.5268737015351432,
+    "map50": 0.7219028462571149,
+    "precision": 0.755038142685251,
+    "recall": 0.6466010813854145,
+    "speed": {
+      "preprocess": 0.4528627250692807,
+      "inference": 48.43315134450677,
+      "loss": 0.006130179390311241,
+      "postprocess": 0.7008506554120686
+    },
+    "name": "add_box_refinement",
+    "restored_nodes": 6
+  },
+  {
+    "map": 0.44171988613118573,
+    "map50": 0.682571806564527,
+    "precision": 0.7078183009245437,
+    "recall": 0.6255073296609669,
+    "speed": {
+      "preprocess": 0.5309078247228172,
+      "inference": 51.90514577072463,
+      "loss": 0.006772014021407813,
+      "postprocess": 0.7800429544295184
+    },
+    "name": "add_sampling_locations",
+    "restored_nodes": 6
+  },
+  {
+    "map": 0.43851451937405683,
+    "map50": 0.6854363717638751,
+    "precision": 0.7212740716348787,
+    "recall": 0.6208521624776578,
+    "speed": {
+      "preprocess": 0.5558823241153732,
+      "inference": 53.68336743908003,
+      "loss": 0.0070757839421276,
+      "postprocess": 0.8339364604034927
+    },
+    "name": "add_decoder_bbox_heads",
+    "restored_nodes": 18
+  },
+  {
+    "map": 0.4539412262445204,
+    "map50": 0.6929795619706862,
+    "precision": 0.7321684320472142,
+    "recall": 0.628647012799405,
+    "speed": {
+      "preprocess": 0.5054183449828997,
+      "inference": 51.50569583012839,
+      "loss": 0.006494564295280725,
+      "postprocess": 0.7008988343295641
+    },
+    "name": "add_encoder_heads",
+    "restored_nodes": 6
+  },
+  {
+    "map": 0.4369595169711042,
+    "map50": 0.6823993962140052,
+    "precision": 0.7385522945224547,
+    "recall": 0.6197263365874448,
+    "speed": {
+      "preprocess": 0.4906492959707976,
+      "inference": 47.45361844878062,
+      "loss": 0.006346514128381386,
+      "postprocess": 0.7234044796496164
+    },
+    "name": "add_decoder_features",
+    "restored_nodes": 102
+  },
+  {
+    "map": 0.4314057342693974,
+    "map50": 0.6853614148529483,
+    "precision": 0.7355706048662062,
+    "recall": 0.6191409596853289,
+    "speed": {
+      "preprocess": 0.5028325991588645,
+      "inference": 50.60087383171776,
+      "loss": 0.007350296509684995,
+      "postprocess": 0.7651706055912655
+    },
+    "name": "add_backbone_neck",
+    "restored_nodes": 15
+  }
+]

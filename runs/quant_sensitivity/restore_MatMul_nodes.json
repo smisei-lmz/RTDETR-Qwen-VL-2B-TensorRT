@@ -1,0 +1,386 @@
+[
+  {
+    "name": "/model.11/ma/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/ma/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/ma/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/ma/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/ma/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/fc1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.11/fc2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/value_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/enc_output/enc_output.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/enc_score_head/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/enc_bbox_head/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/enc_bbox_head/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.0/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.0/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.1/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.1/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.2/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.2/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_3/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.3/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.3/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_4/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.4/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/MatMul_2",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.4/layers.1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_5/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/MatMul_1",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/MatMul_3",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/MatMul_4",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/sampling_offsets/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/attention_weights/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/output_proj/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/linear1/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/linear2/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.5/layers.0/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_score_head.5/MatMul",
+    "op": "MatMul"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.5/layers.1/MatMul",
+    "op": "MatMul"
+  }
+]

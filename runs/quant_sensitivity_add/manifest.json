@@ -1,0 +1,33 @@
+{
+  "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-int8.onnx",
+  "source_sha256": "3909ac05f370f1072c61e6abbfb531d0b05a2aec74255c2011db641623c4c8a4",
+  "count": 200,
+  "seed": 42,
+  "cases": [
+    {
+      "name": "add_box_refinement",
+      "restore_pattern": "^/model\\.28/decoder/Add(?:_\\d+)?$"
+    },
+    {
+      "name": "add_sampling_locations",
+      "restore_pattern": "^/model\\.28/decoder/layers\\.\\d+/cross_attn/Add$"
+    },
+    {
+      "name": "add_decoder_bbox_heads",
+      "restore_pattern": "^/model\\.28/decoder/dec_bbox_head\\..*/Add$"
+    },
+    {
+      "name": "add_encoder_heads",
+      "restore_pattern": "^/model\\.28/(?!decoder/).*Add(?:_\\d+)?$"
+    },
+    {
+      "name": "add_decoder_features",
+      "restore_pattern": "^/model\\.28/decoder/(?:layers\\..*|query_pos_head/.*)/Add(?:_\\d+)?$"
+    },
+    {
+      "name": "add_backbone_neck",
+      "restore_pattern": "^/model\\.(?!28/).*Add(?:_\\d+)?$"
+    }
+  ],
+  "note": "Fixed original calibration scales. A diagnostic ablation, not recalibration."
+}

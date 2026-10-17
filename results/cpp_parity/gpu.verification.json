@@ -1,0 +1,9 @@
+{
+  "tensorrt": "10.13.3.9",
+  "input_max_abs": 0.0,
+  "output_same_input_max_abs": 0.0,
+  "output_python_preprocess_max_abs": 0.0,
+  "detections": 15,
+  "decoded_boxes_max_abs": 4.7070312803043635e-07,
+  "passed": true
+}

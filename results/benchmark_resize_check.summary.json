@@ -1,0 +1,26 @@
+{
+"engine":"models/rtdetr-l-int8-box-add6-fp32.engine",
+"image":"ultralytics/coco/images/val2017/000000057150.jpg",
+"width":240,"height":320,"opencv_version":"4.5.4","opencv_threads":1,"cpu_preprocess":"OpenCV resize+cvtColor+convertTo+split","iterations_per_mode":1,"warmup_per_mode":0,"lanes":1,"h2d_cpu_bytes":4915200,"h2d_cuda_bytes":230400,"d2h_cpu_bytes":7200,"d2h_cuda_bytes":7204,
+"input_max_abs":5.96046448e-08,"output_max_abs":0,"postprocess_box_max_abs":0,"detections":39,
+"cpu":{
+"cpu_prepare": {"mean_ms":1.238118,"median_ms":1.238118,"p95_ms":1.238118},
+"h2d": {"mean_ms":0.349920005,"median_ms":0.349920005,"p95_ms":0.349920005},
+"gpu_pre": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"infer": {"mean_ms":4.68463993,"median_ms":4.68463993,"p95_ms":4.68463993},
+"gpu_post": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"d2h": {"mean_ms":0.0619839989,"median_ms":0.0619839989,"p95_ms":0.0619839989},
+"cpu_post": {"mean_ms":0.00163,"median_ms":0.00163,"p95_ms":0.00163},
+"total": {"mean_ms":6.386951,"median_ms":6.386951,"p95_ms":6.386951}
+},
+"cuda":{
+"cpu_prepare": {"mean_ms":0.0217,"median_ms":0.0217,"p95_ms":0.0217},
+"h2d": {"mean_ms":0.0181120001,"median_ms":0.0181120001,"p95_ms":0.0181120001},
+"gpu_pre": {"mean_ms":0.0363200009,"median_ms":0.0363200009,"p95_ms":0.0363200009},
+"infer": {"mean_ms":6.2891202,"median_ms":6.2891202,"p95_ms":6.2891202},
+"gpu_post": {"mean_ms":0.00457599992,"median_ms":0.00457599992,"p95_ms":0.00457599992},
+"d2h": {"mean_ms":0.113279998,"median_ms":0.113279998,"p95_ms":0.113279998},
+"cpu_post": {"mean_ms":0.00061,"median_ms":0.00061,"p95_ms":0.00061},
+"total": {"mean_ms":6.536772,"median_ms":6.536772,"p95_ms":6.536772}
+}
+}

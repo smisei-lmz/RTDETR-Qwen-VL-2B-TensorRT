@@ -1,0 +1,62 @@
+[
+  {
+    "name": "/model.6/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.7/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/ma/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/ma/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/ma/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/fc1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/act/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/fc2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.11/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.16/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.21/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.24/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.27/Add",
+    "op": "Add"
+  }
+]

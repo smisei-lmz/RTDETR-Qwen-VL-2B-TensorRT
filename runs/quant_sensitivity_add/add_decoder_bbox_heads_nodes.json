@@ -1,0 +1,74 @@
+[
+  {
+    "name": "/model.28/decoder/dec_bbox_head.0/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.0/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.0/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.1/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.1/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.1/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.2/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.2/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.2/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.3/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.3/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.3/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.4/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.4/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.4/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.5/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.5/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/dec_bbox_head.5/layers.2/Add",
+    "op": "Add"
+  }
+]

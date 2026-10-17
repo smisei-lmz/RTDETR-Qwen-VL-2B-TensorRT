@@ -1,0 +1,20 @@
+{
+  "calibration_shape": [
+    100,
+    3,
+    640,
+    640
+  ],
+  "dtype": "float32",
+  "range": [
+    0.0,
+    1.0
+  ],
+  "finite": true,
+  "first_three_preprocess_max_abs_errors": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "qdq_scales_positive_finite": true
+}

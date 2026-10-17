@@ -1,0 +1,410 @@
+[
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/value_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0_1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0_2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0_3/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_3/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0_4/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_4/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.0_5/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/query_pos_head/layers.1_5/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/sampling_offsets/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/attention_weights/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/output_proj/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/linear1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/linear2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/Add_4",
+    "op": "Add"
+  }
+]

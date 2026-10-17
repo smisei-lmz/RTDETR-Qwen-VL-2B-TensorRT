@@ -1,0 +1,8 @@
+{
+  "engine_sha256": "85cae6fa0fb1ae8e8a466da6c5a7038179ac8aefa455a592a6db3cbf24aa7bb2",
+  "gpu": "NVIDIA GeForce RTX 5060",
+  "driver": "610.62",
+  "tensorrt": "10.13.3.9",
+  "cuda_toolkit": "13.4",
+  "scope": "single lane fixed-image latency; primary 200 paired samples; OpenCV threads=1"
+}

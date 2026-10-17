@@ -1,0 +1,30 @@
+[
+  {
+    "name": "/model.11/ma/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/Gemm",
+    "op": "Gemm"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/Gemm",
+    "op": "Gemm"
+  }
+]

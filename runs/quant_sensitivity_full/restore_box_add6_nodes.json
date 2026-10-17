@@ -1,0 +1,26 @@
+[
+  {
+    "name": "/model.28/decoder/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/Add_1",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/Add_2",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/Add_3",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/Add_4",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/Add_5",
+    "op": "Add"
+  }
+]

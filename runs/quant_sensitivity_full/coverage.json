@@ -1,0 +1,14 @@
+{
+  "Conv": {
+    "both_inputs_dq": 110,
+    "total": 110
+  },
+  "MatMul": {
+    "both_inputs_dq": 96,
+    "total": 111
+  },
+  "Gemm": {
+    "both_inputs_dq": 7,
+    "total": 7
+  }
+}

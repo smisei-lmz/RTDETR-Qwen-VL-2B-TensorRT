@@ -1,0 +1,26 @@
+[
+  {
+    "name": "box_add_5_only",
+    "restore_pattern": "^/model\\.28/decoder/Add_5$"
+  },
+  {
+    "name": "box_add_4_only",
+    "restore_pattern": "^/model\\.28/decoder/Add_4$"
+  },
+  {
+    "name": "box_add_3_only",
+    "restore_pattern": "^/model\\.28/decoder/Add_3$"
+  },
+  {
+    "name": "box_add_2_only",
+    "restore_pattern": "^/model\\.28/decoder/Add_2$"
+  },
+  {
+    "name": "box_add_1_only",
+    "restore_pattern": "^/model\\.28/decoder/Add_1$"
+  },
+  {
+    "name": "box_add_0_only",
+    "restore_pattern": "^/model\\.28/decoder/Add$"
+  }
+]

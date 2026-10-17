@@ -1,0 +1,26 @@
+[
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Add",
+    "op": "Add"
+  }
+]

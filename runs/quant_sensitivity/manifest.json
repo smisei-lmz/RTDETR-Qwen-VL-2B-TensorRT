@@ -1,0 +1,55 @@
+{
+  "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-int8.onnx",
+  "source_sha256": "3909ac05f370f1072c61e6abbfb531d0b05a2aec74255c2011db641623c4c8a4",
+  "count": 200,
+  "seed": 42,
+  "cases": [
+    {
+      "name": "reference_fp32",
+      "reference": "fp32"
+    },
+    {
+      "name": "reference_int8",
+      "reference": "int8"
+    },
+    {
+      "name": "restore_MatMul",
+      "restore_ops": [
+        "MatMul"
+      ]
+    },
+    {
+      "name": "restore_Gemm",
+      "restore_ops": [
+        "Gemm"
+      ]
+    },
+    {
+      "name": "restore_Add",
+      "restore_ops": [
+        "Add"
+      ]
+    },
+    {
+      "name": "restore_Mul",
+      "restore_ops": [
+        "Mul"
+      ]
+    },
+    {
+      "name": "restore_Clip",
+      "restore_ops": [
+        "Clip"
+      ]
+    },
+    {
+      "name": "keep_Conv_MatMul_Gemm",
+      "keep_ops": [
+        "Conv",
+        "MatMul",
+        "Gemm"
+      ]
+    }
+  ],
+  "note": "Fixed original calibration scales. A diagnostic ablation, not recalibration."
+}

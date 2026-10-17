@@ -1,0 +1,26 @@
+[
+  {
+    "name": "/model.28/enc_output/enc_output.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/enc_score_head/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/enc_bbox_head/layers.0/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/enc_bbox_head/layers.1/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/enc_bbox_head/layers.2/Add",
+    "op": "Add"
+  },
+  {
+    "name": "/model.28/Add_1",
+    "op": "Add"
+  }
+]

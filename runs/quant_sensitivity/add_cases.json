@@ -1,0 +1,26 @@
+[
+  {
+    "name": "add_box_refinement",
+    "restore_pattern": "^/model\\.28/decoder/Add(?:_\\d+)?$"
+  },
+  {
+    "name": "add_sampling_locations",
+    "restore_pattern": "^/model\\.28/decoder/layers\\.\\d+/cross_attn/Add$"
+  },
+  {
+    "name": "add_decoder_bbox_heads",
+    "restore_pattern": "^/model\\.28/decoder/dec_bbox_head\\..*/Add$"
+  },
+  {
+    "name": "add_encoder_heads",
+    "restore_pattern": "^/model\\.28/(?!decoder/).*Add(?:_\\d+)?$"
+  },
+  {
+    "name": "add_decoder_features",
+    "restore_pattern": "^/model\\.28/decoder/(?:layers\\..*|query_pos_head/.*)/Add(?:_\\d+)?$"
+  },
+  {
+    "name": "add_backbone_neck",
+    "restore_pattern": "^/model\\.(?!28/).*Add(?:_\\d+)?$"
+  }
+]

@@ -1,0 +1,6 @@
+[
+  {
+    "name": "restore_box_add6",
+    "restore_pattern": "^/model\\.28/decoder/Add(?:_\\d+)?$"
+  }
+]

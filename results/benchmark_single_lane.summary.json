@@ -1,0 +1,26 @@
+{
+"engine":"/home/smisei/project/RTDETR-ONNX-TensorRT/cpp/../models/rtdetr-l-int8-box-add6-fp32.engine",
+"image":"/home/smisei/project/RTDETR-ONNX-TensorRT/cpp/../ultralytics/coco/images/val2017/000000147740.jpg",
+"width":640,"height":480,"opencv_version":"4.5.4","opencv_threads":1,"cpu_preprocess":"OpenCV resize+cvtColor+convertTo+split","iterations_per_mode":200,"warmup_per_mode":30,"lanes":1,"h2d_cpu_bytes":4915200,"h2d_cuda_bytes":921600,"d2h_cpu_bytes":7200,"d2h_cuda_bytes":7204,
+"input_max_abs":5.96046448e-08,"output_max_abs":0,"postprocess_box_max_abs":0,"detections":15,
+"cpu":{
+"cpu_prepare": {"mean_ms":1.90209843,"median_ms":1.7265535,"p95_ms":2.892319},
+"h2d": {"mean_ms":0.39079136,"median_ms":0.361808002,"p95_ms":0.523648024},
+"gpu_pre": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"infer": {"mean_ms":5.53312865,"median_ms":5.35726404,"p95_ms":7.10390377},
+"gpu_post": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"d2h": {"mean_ms":0.0649556804,"median_ms":0.0650880001,"p95_ms":0.0760319978},
+"cpu_post": {"mean_ms":0.003045945,"median_ms":0.002125,"p95_ms":0.00773},
+"total": {"mean_ms":7.98111502,"median_ms":7.6783705,"p95_ms":10.110723}
+},
+"cuda":{
+"cpu_prepare": {"mean_ms":0.136077,"median_ms":0.1173065,"p95_ms":0.240422},
+"h2d": {"mean_ms":0.076395039,"median_ms":0.0674239993,"p95_ms":0.109536},
+"gpu_pre": {"mean_ms":0.0821513598,"median_ms":0.0585119985,"p95_ms":0.184928},
+"infer": {"mean_ms":5.45319054,"median_ms":5.25572801,"p95_ms":6.76979208},
+"gpu_post": {"mean_ms":0.00921759998,"median_ms":0.00556800002,"p95_ms":0.0289919991},
+"d2h": {"mean_ms":0.05306752,"median_ms":0.0465600006,"p95_ms":0.083039999},
+"cpu_post": {"mean_ms":0.00064345,"median_ms":0.0006,"p95_ms":0.00111},
+"total": {"mean_ms":5.87297895,"median_ms":5.65603,"p95_ms":7.224564}
+}
+}

@@ -1,0 +1,13 @@
+{
+  "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-int8.onnx",
+  "source_sha256": "3909ac05f370f1072c61e6abbfb531d0b05a2aec74255c2011db641623c4c8a4",
+  "count": 4500,
+  "seed": 42,
+  "cases": [
+    {
+      "name": "restore_box_add6",
+      "restore_pattern": "^/model\\.28/decoder/Add(?:_\\d+)?$"
+    }
+  ],
+  "note": "Fixed original calibration scales. A diagnostic ablation, not recalibration."
+}

@@ -1,0 +1,26 @@
+{
+"engine":"/home/smisei/project/RTDETR-ONNX-TensorRT/cpp/../models/rtdetr-l-int8-box-add6-fp32.engine",
+"image":"/home/smisei/project/RTDETR-ONNX-TensorRT/cpp/../ultralytics/coco/images/val2017/000000147740.jpg",
+"width":640,"height":480,"opencv_version":"4.5.4","opencv_threads":1,"iterations_per_mode":200,"warmup_per_mode":30,"lanes":1,"h2d_cpu_bytes":4915200,"h2d_cuda_bytes":921600,"d2h_cpu_bytes":7200,"d2h_cuda_bytes":7204,
+"input_max_abs":0,"output_max_abs":0,"postprocess_box_max_abs":0,"detections":15,
+"cpu":{
+"cpu_prepare": {"mean_ms":1.90233005,"median_ms":1.860259,"p95_ms":2.24447},
+"h2d": {"mean_ms":0.393201279,"median_ms":0.361552,"p95_ms":0.545728028},
+"gpu_pre": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"infer": {"mean_ms":5.34398144,"median_ms":5.29844785,"p95_ms":6.16287994},
+"gpu_post": {"mean_ms":0,"median_ms":0,"p95_ms":0},
+"d2h": {"mean_ms":0.06473088,"median_ms":0.0653119981,"p95_ms":0.0694079995},
+"cpu_post": {"mean_ms":0.00210378,"median_ms":0.00156,"p95_ms":0.00413},
+"total": {"mean_ms":7.78292327,"median_ms":7.748748,"p95_ms":8.799848}
+},
+"cuda":{
+"cpu_prepare": {"mean_ms":0.108805495,"median_ms":0.099056,"p95_ms":0.175262},
+"h2d": {"mean_ms":0.0722107186,"median_ms":0.0671039969,"p95_ms":0.0963839963},
+"gpu_pre": {"mean_ms":0.07766096,"median_ms":0.0582560003,"p95_ms":0.155231997},
+"infer": {"mean_ms":5.33955825,"median_ms":5.29840016,"p95_ms":6.39215994},
+"gpu_post": {"mean_ms":0.00755967997,"median_ms":0.00518399989,"p95_ms":0.0278079994},
+"d2h": {"mean_ms":0.0563632,"median_ms":0.0522559993,"p95_ms":0.0776000023},
+"cpu_post": {"mean_ms":0.000532055,"median_ms":0.00047,"p95_ms":0.00099},
+"total": {"mean_ms":5.72334834,"median_ms":5.664092,"p95_ms":6.778442}
+}
+}

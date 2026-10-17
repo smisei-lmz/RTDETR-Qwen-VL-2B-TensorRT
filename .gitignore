@@ -1,0 +1,62 @@
+# Python environments and caches
+.venv*/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# CMake/CUDA build outputs (keep cpp/third_party headers and licenses)
+/build*/
+/cpp/build*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.dll
+*.dylib
+*.pdb
+
+# Model weights, exported networks, and TensorRT engines
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.onnx.data
+*.onnx_data
+*.engine
+*.plan
+
+# Datasets, calibration arrays, and binary tensor dumps
+/data/
+/datasets/
+/coco/
+*.npy
+*.npz
+*.bin
+*.cache
+*.calib
+
+# Generated training/validation images and prediction images
+# Keep quantization reports and benchmark JSON/CSV records elsewhere.
+/runs/detect/
+/result.jpg
+/results/**/*.jpg
+/results/**/*.jpeg
+/results/**/*.png
+
+# Logs and profiler captures
+*.log
+*.nsys-rep
+*.ncu-rep
+*.qdrep
