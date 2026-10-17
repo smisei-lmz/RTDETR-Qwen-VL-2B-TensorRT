@@ -33,10 +33,12 @@ message(STATUS "TensorRT headers: ${TENSORRT_INCLUDE_DIR}")
 message(STATUS "TensorRT runtime: ${TENSORRT_LIBRARY}")
 
 set(TRT_SOURCES src/BufferManager.cpp src/Preprocess.cpp src/Postprocess.cpp
-    src/TrtEngine.cpp src/CudaPreprocess.cu src/CudaPostprocess.cu)
+    src/TrtEngine.cpp src/load_TrtEngine_runtime.cpp src/laneManager.cpp
+    src/CudaPreprocess.cu src/CudaPostprocess.cu)
 add_executable(trt_example main.cpp ${TRT_SOURCES})
 add_executable(trt_benchmark benchmark.cpp ${TRT_SOURCES})
-foreach(target trt_example trt_benchmark)
+add_executable(trt_lane_check lane_check.cpp ${TRT_SOURCES})
+foreach(target trt_example trt_benchmark trt_lane_check)
     target_include_directories(${target} PRIVATE include ${OpenCV_INCLUDE_DIRS})
     target_include_directories(${target} SYSTEM PRIVATE "${TENSORRT_INCLUDE_DIR}")
     target_link_libraries(${target} PRIVATE "${TENSORRT_LIBRARY}" CUDA::cudart ${OpenCV_LIBS} ${CMAKE_DL_LIBS})
