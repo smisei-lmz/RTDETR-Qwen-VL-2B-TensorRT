@@ -1,0 +1,42 @@
+{
+  "recorded_date_client": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "engine_sha256": "85cae6fa0fb1ae8e8a466da6c5a7038179ac8aefa455a592a6db3cbf24aa7bb2",
+  "image_sha256": "0384b4bff79f53a0f2bcc54c99c0f7dc24660dd33f37c9b6dfa6adaa1e4a88ce",
+  "git_commit": "d0a3af882db2c6460b225b0f620807ddbdafdf16",
+  "git_status": "M cpp/CMakeLists.txt\n M cpp/src/laneManager.cpp\n ? ultralytics\n?? cpp/lane_benchmark.cpp\n?? results/lane_benchmark_20261017.samples.csv\n?? results/lane_benchmark_20261017.summary.json",
+  "gpu": {
+    "exit_code": 0,
+    "output": "NVIDIA GeForce RTX 5060, 610.62, 8151 MiB"
+  },
+  "cuda_toolkit": {
+    "exit_code": 0,
+    "output": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Mon_Aug_03_13:24:11_PDT_2026\nCuda compilation tools, release 13.4, V13.4.59\nBuild cuda_13.4.r13.4/compiler.38657139_0"
+  },
+  "nsight_systems": {
+    "exit_code": 0,
+    "output": "NVIDIA Nsight Systems version 2026.3.2.313-263238521929v0"
+  },
+  "nsight_compute": {
+    "exit_code": 0,
+    "output": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2026 NVIDIA Corporation\nVersion 2026.3.0.0 (build 38525999) (public-release)"
+  },
+  "compiler": {
+    "exit_code": 0,
+    "output": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+  },
+  "tensorrt": {
+    "exit_code": 0,
+    "output": "10.13.3.9"
+  },
+  "opencv": {
+    "exit_code": 0,
+    "output": "4.5.4"
+  },
+  "source_sha256": {
+    "cpp/lane_benchmark.cpp": "a47fc0bf70c4ff4fd5a494cd87dbb8ca51df6f65bb48632176e3b6dc2a2e7d39",
+    "cpp/src/laneManager.cpp": "da10129de2c5665ddcc22b8c4d09b4501cb2ee561f8db3a57c753bc97c1ab718",
+    "cpp/include/laneManager.h": "7acc946e4dfdbc32f51a8ec1de2ef763e1a99ad14c4cbe01a37d4446ef795a07"
+  },
+  "scope": "PC GPU, fixed-image closed-loop load, one host scheduler thread, OpenCV threads=1; not a live-video or ROS measurement"
+}

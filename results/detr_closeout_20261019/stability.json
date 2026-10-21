@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "mode": "stability",
+  "requested_duration_s": 5,
+  "elapsed_s": 5.007710424,
+  "submitted": 550,
+  "completed": 550,
+  "failed": 0,
+  "dropped": 0,
+  "lanes": 1,
+  "warmup": 30,
+  "threshold": 0.25,
+  "image_count": 2,
+  "all_frames_collected": true,
+  "lane_destroyed": true,
+  "rss_before_bytes": 471437312,
+  "rss_after_bytes": 471580672,
+  "device_free_before_bytes": 7191134208,
+  "device_free_after_bytes": 7191134208,
+  "device_free_engine_only_bytes": 7289700352,
+  "device_free_after_lane_teardown_bytes": 7268728832,
+  "device_memory_scope": "whole device; may include other processes",
+  "latency_scope": "submit through collect; excludes image decode and CSV writes",
+  "target_seconds": 5,
+  "duration_met": true,
+  "sample_count_matches": true,
+  "latency_mean_ms": 9.09160533272728,
+  "latency_p50_ms": 9.076854,
+  "latency_p95_ms": 10.139011,
+  "latency_p99_ms": 10.950991,
+  "percentile_method": "nearest_rank",
+  "memory_samples": [
+    {
+      "elapsed_s": 0.000109165,
+      "completed": 0.0,
+      "rss_bytes": 471437312.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 5.007888249,
+      "completed": 550.0,
+      "rss_bytes": 471580672.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    }
+  ],
+  "second_half_rss_range_bytes": 0.0,
+  "second_half_device_free_range_bytes": 0.0,
+  "memory_note": "RSS is this C++ process; device free memory covers the whole GPU. Ranges alone do not prove absence of all leaks.",
+  "scope": "closed-loop two preloaded images, repeated-output equality each frame; no video arrival queue or ROS",
+  "engine_key": "fp16",
+  "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+  "images": [
+    {
+      "path": "ultralytics/coco/images/val2017/000000147740.jpg",
+      "sha256": "0384b4bff79f53a0f2bcc54c99c0f7dc24660dd33f37c9b6dfa6adaa1e4a88ce"
+    },
+    {
+      "path": "ultralytics/coco/images/val2017/000000057150.jpg",
+      "sha256": "ae7e6f712229d1ab128aab94e4b358c2dd58b63af4e45438bf9aa0d089eb963f"
+    }
+  ],
+  "plan_30_minute_requirement_met": false
+}

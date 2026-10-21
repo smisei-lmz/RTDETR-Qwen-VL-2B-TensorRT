@@ -1,0 +1,349 @@
+{
+  "precision_gate_applied": false,
+  "engine": "models/rtdetr-l-int8-box-add6-fp32.engine",
+  "engine_sha256": "85cae6fa0fb1ae8e8a466da6c5a7038179ac8aefa455a592a6db3cbf24aa7bb2",
+  "scope": "closed-loop fixed-image throughput; latency from submit start to collected CPU result; excludes decode, admission wait and ROS",
+  "sample_identities_verified": true,
+  "sample_count": 5000,
+  "gpu_before_run": "NVIDIA GeForce RTX 5060, 610.62, 8151 MiB, 46 %",
+  "gpu_after_run_samples": [
+    "47 %, 2 %, 52, 40.90 W, 2760 MHz, P0",
+    "41 %, 2 %, 52, 40.13 W, 2760 MHz, P0",
+    "9 %, 4 %, 51, 40.72 W, 2760 MHz, P0"
+  ],
+  "comparison_note": "Same binary, image and benchmark parameters as the FP16 run; different measurement period. Nonzero GPU utilization observed before and after this run; do not infer a precision-only speed ratio from separate runs.",
+  "lane_benchmark": {
+    "engine": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-int8-box-add6-fp32.engine",
+    "image": "/home/smisei/project/RTDETR-ONNX-TensorRT/ultralytics/coco/images/val2017/000000147740.jpg",
+    "source_width": 640,
+    "source_height": 480,
+    "frames_per_round": 500,
+    "warmup_per_lane": 30,
+    "rounds": 5,
+    "poll_us": 50,
+    "profiled": false,
+    "scope": "closed-loop fixed-image throughput; latency from submit start to collected CPU result; excludes decode, admission wait and ROS",
+    "percentile_method": "nearest_rank",
+    "runs": [
+      {
+        "round": 0,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5892.060845,
+        "fps": 84.8599519172,
+        "process_cpu_ms": 2224.333,
+        "latency_mean_ms": 11.78376457,
+        "latency_p50_ms": 11.269628,
+        "latency_p95_ms": 15.404935,
+        "latency_p99_ms": 15.809285
+      },
+      {
+        "round": 0,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5581.332423,
+        "fps": 89.5843433263,
+        "process_cpu_ms": 2218.382,
+        "latency_mean_ms": 22.294295932,
+        "latency_p50_ms": 22.588899,
+        "latency_p95_ms": 25.309474,
+        "latency_p99_ms": 25.933445
+      },
+      {
+        "round": 1,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5578.833706,
+        "fps": 89.6244674693,
+        "process_cpu_ms": 2302.902,
+        "latency_mean_ms": 22.283129834,
+        "latency_p50_ms": 22.592863,
+        "latency_p95_ms": 25.642657,
+        "latency_p99_ms": 26.234302
+      },
+      {
+        "round": 1,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5908.953314,
+        "fps": 84.6173549578,
+        "process_cpu_ms": 2209.496,
+        "latency_mean_ms": 11.817415266,
+        "latency_p50_ms": 11.127654,
+        "latency_p95_ms": 15.259239,
+        "latency_p99_ms": 15.761546
+      },
+      {
+        "round": 2,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5902.39441,
+        "fps": 84.7113841042,
+        "process_cpu_ms": 2211.975,
+        "latency_mean_ms": 11.804242278,
+        "latency_p50_ms": 11.278254,
+        "latency_p95_ms": 15.239709,
+        "latency_p99_ms": 15.74674
+      },
+      {
+        "round": 2,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5669.887948,
+        "fps": 88.1851642547,
+        "process_cpu_ms": 2203.476,
+        "latency_mean_ms": 22.652074162,
+        "latency_p50_ms": 22.903094,
+        "latency_p95_ms": 25.613179,
+        "latency_p99_ms": 26.268826
+      },
+      {
+        "round": 3,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5721.396335,
+        "fps": 87.3912539394,
+        "process_cpu_ms": 2278.522,
+        "latency_mean_ms": 22.851136068,
+        "latency_p50_ms": 23.158664,
+        "latency_p95_ms": 25.925822,
+        "latency_p99_ms": 26.776835
+      },
+      {
+        "round": 3,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5975.225091,
+        "fps": 83.6788560071,
+        "process_cpu_ms": 2233.895,
+        "latency_mean_ms": 11.949960116,
+        "latency_p50_ms": 11.331157,
+        "latency_p95_ms": 15.520328,
+        "latency_p99_ms": 15.889913
+      },
+      {
+        "round": 4,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5937.250694,
+        "fps": 84.2140623278,
+        "process_cpu_ms": 2185.055,
+        "latency_mean_ms": 11.874040806,
+        "latency_p50_ms": 11.265799,
+        "latency_p95_ms": 15.386685,
+        "latency_p99_ms": 15.893182
+      },
+      {
+        "round": 4,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 5710.523386,
+        "fps": 87.5576486081,
+        "process_cpu_ms": 2222.419,
+        "latency_mean_ms": 22.813353096,
+        "latency_p50_ms": 23.183352,
+        "latency_p95_ms": 25.998076,
+        "latency_p99_ms": 26.612113
+      }
+    ],
+    "aggregate": [
+      {
+        "round": -1,
+        "lanes": 1,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 29615.884354,
+        "fps": 84.4141599865,
+        "process_cpu_ms": 11064.754,
+        "latency_mean_ms": 11.8458846072,
+        "latency_p50_ms": 11.264391,
+        "latency_p95_ms": 15.358157,
+        "latency_p99_ms": 15.813826
+      },
+      {
+        "round": -1,
+        "lanes": 2,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 28261.973798,
+        "fps": 88.458082152,
+        "process_cpu_ms": 11225.701,
+        "latency_mean_ms": 22.5787978184,
+        "latency_p50_ms": 22.866951,
+        "latency_p95_ms": 25.713993,
+        "latency_p99_ms": 26.435269
+      }
+    ]
+  },
+  "preprocessing": {
+    "engine": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-int8-box-add6-fp32.engine",
+    "image": "/home/smisei/project/RTDETR-ONNX-TensorRT/ultralytics/coco/images/val2017/000000147740.jpg",
+    "width": 640,
+    "height": 480,
+    "opencv_version": "4.5.4",
+    "opencv_threads": 1,
+    "cpu_preprocess": "OpenCV resize+cvtColor+convertTo+split",
+    "cpu_staging": 0,
+    "iterations_per_mode": 200,
+    "warmup_per_mode": 30,
+    "lanes": 1,
+    "h2d_cpu_bytes": 4915200,
+    "h2d_cuda_bytes": 921600,
+    "d2h_cpu_bytes": 7200,
+    "d2h_cuda_bytes": 7204,
+    "input_max_abs": 5.96046448e-08,
+    "output_max_abs": 0,
+    "postprocess_box_max_abs": 0,
+    "detections": 15,
+    "cpu": {
+      "cpu_prepare": {
+        "mean_ms": 1.67953211,
+        "median_ms": 1.6193745,
+        "p95_ms": 2.184481
+      },
+      "h2d": {
+        "mean_ms": 0.36635232,
+        "median_ms": 0.352672011,
+        "p95_ms": 0.43513599
+      },
+      "gpu_pre": {
+        "mean_ms": 0,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "infer": {
+        "mean_ms": 11.0941782,
+        "median_ms": 10.4830556,
+        "p95_ms": 14.6319361
+      },
+      "gpu_post": {
+        "mean_ms": 0,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "d2h": {
+        "mean_ms": 0.0602244799,
+        "median_ms": 0.0583839994,
+        "p95_ms": 0.0726080015
+      },
+      "cpu_post": {
+        "mean_ms": 0.00211826,
+        "median_ms": 0.00189,
+        "p95_ms": 0.00316
+      },
+      "total": {
+        "mean_ms": 13.3121902,
+        "median_ms": 12.8205095,
+        "p95_ms": 16.723651
+      }
+    },
+    "cuda": {
+      "cpu_prepare": {
+        "mean_ms": 0.109959185,
+        "median_ms": 0.105805,
+        "p95_ms": 0.14831
+      },
+      "h2d": {
+        "mean_ms": 0.0726131197,
+        "median_ms": 0.0678240024,
+        "p95_ms": 0.0853760019
+      },
+      "gpu_pre": {
+        "mean_ms": 0.17860896,
+        "median_ms": 0.152975999,
+        "p95_ms": 0.346688002
+      },
+      "infer": {
+        "mean_ms": 11.2134922,
+        "median_ms": 10.6485758,
+        "p95_ms": 14.693408
+      },
+      "gpu_post": {
+        "mean_ms": 0.00515552001,
+        "median_ms": 0.00409599999,
+        "p95_ms": 0.0055999998
+      },
+      "d2h": {
+        "mean_ms": 0.0591463998,
+        "median_ms": 0.0562399998,
+        "p95_ms": 0.0770239979
+      },
+      "cpu_post": {
+        "mean_ms": 0.000802955,
+        "median_ms": 0.000675,
+        "p95_ms": 0.00136
+      },
+      "total": {
+        "mean_ms": 11.735548,
+        "median_ms": 11.136837,
+        "p95_ms": 15.230263
+      }
+    }
+  },
+  "historical_int8": [
+    {
+      "round": -1,
+      "lanes": 1,
+      "submitted": 2500,
+      "completed": 2500,
+      "dropped": 0,
+      "failed": 0,
+      "wall_ms": 13845.099201,
+      "fps": 180.569309306,
+      "process_cpu_ms": 9710.031,
+      "latency_mean_ms": 5.5377155988,
+      "latency_p50_ms": 5.378448,
+      "latency_p95_ms": 6.605118,
+      "latency_p99_ms": 8.150438
+    },
+    {
+      "round": -1,
+      "lanes": 2,
+      "submitted": 2500,
+      "completed": 2500,
+      "dropped": 0,
+      "failed": 0,
+      "wall_ms": 13894.817176,
+      "fps": 179.923202179,
+      "process_cpu_ms": 10491.564,
+      "latency_mean_ms": 11.0966173512,
+      "latency_p50_ms": 10.970688,
+      "latency_p95_ms": 12.674927,
+      "latency_p99_ms": 14.784456
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "daily_sections": 37,
+  "concept_definitions": 111,
+  "source_excerpts": [
+    {
+      "day": 1,
+      "source": "tools/course.py",
+      "line": 51,
+      "line_count": 10,
+      "sha256": "4389ac92c526d4b4bbaefb957239b4f7f6202645457df7e909686f6f6204f28d"
+    },
+    {
+      "day": 2,
+      "source": "tools/assets.py",
+      "line": 7,
+      "line_count": 13,
+      "sha256": "f2bd8ef04331b9d84f2f834b16a8018eb9fcf325e9d5031e002367456985856c"
+    },
+    {
+      "day": 3,
+      "source": "tools/model_tools.py",
+      "line": 21,
+      "line_count": 8,
+      "sha256": "0e7b4b382c44f425039e37a6f3ce328c2f4376352bbbaff0ec029b48e3d1039e"
+    },
+    {
+      "day": 4,
+      "source": "tools/model_tools.py",
+      "line": 71,
+      "line_count": 12,
+      "sha256": "efd2d1f929241aa0c75597171c0178913fd91905624edf221414b6451fb293bb"
+    },
+    {
+      "day": 5,
+      "source": "tools/model_tools.py",
+      "line": 87,
+      "line_count": 17,
+      "sha256": "fab91b2acae529031bb4f8e1644316efe1670aaa6301dc4a69f10bf97587d1cc"
+    },
+    {
+      "day": 6,
+      "source": "tools/model_tools.py",
+      "line": 114,
+      "line_count": 18,
+      "sha256": "5668a462ba636f0330613735e0066ec09cf584f05c8b60729c775d77fb0c6695"
+    },
+    {
+      "day": 7,
+      "source": "pc/src/main.cpp",
+      "line": 58,
+      "line_count": 9,
+      "sha256": "26a48177383953f1002aa9762245872634eff930362bf9d6f2467884f0d8d03c"
+    },
+    {
+      "day": 8,
+      "source": "pc/src/main.cpp",
+      "line": 70,
+      "line_count": 10,
+      "sha256": "829d01a1f3ec7d64089836aea086f857fd5610811762a417f6493840f69702cf"
+    },
+    {
+      "day": 9,
+      "source": "pc/include/edge.hpp",
+      "line": 125,
+      "line_count": 15,
+      "sha256": "20bbafd72361ceef8241cbe76136b8da5bf957f1e20b3c5109acce43cb8e5553"
+    },
+    {
+      "day": 10,
+      "source": "pc/include/edge.hpp",
+      "line": 140,
+      "line_count": 13,
+      "sha256": "80e89104a5797adcf4cb6db6708007f4fdcf71ebf57a0700a7b6a04e180ee042"
+    },
+    {
+      "day": 11,
+      "source": "pc/src/main.cpp",
+      "line": 58,
+      "line_count": 9,
+      "sha256": "26a48177383953f1002aa9762245872634eff930362bf9d6f2467884f0d8d03c"
+    },
+    {
+      "day": 12,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 158,
+      "line_count": 9,
+      "sha256": "130d6983326496770ab887018216b2325b50730d31cd4a0d0e341a9b2c38571a"
+    },
+    {
+      "day": 13,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 15,
+      "line_count": 14,
+      "sha256": "2d4974888468908df70d55d81148cf967e41f32e37158eb4e7ed80f1c1fa9edc"
+    },
+    {
+      "day": 14,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 175,
+      "line_count": 10,
+      "sha256": "4b19c631b7b83b69a1bbff46e79d31155c5dd96559cad0640cc731a2d851438b"
+    },
+    {
+      "day": 15,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 90,
+      "line_count": 9,
+      "sha256": "a62289084cc50ab6a7b38d92d243094a5cf496351ddcdb5d8a770f29b3382327"
+    },
+    {
+      "day": 16,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 151,
+      "line_count": 4,
+      "sha256": "5237b330a0f8638ccbbfdadb0c314e8039abb7cfa6f04867869bcf3fe0d1f8bb"
+    },
+    {
+      "day": 17,
+      "source": "tools/model_tools.py",
+      "line": 137,
+      "line_count": 17,
+      "sha256": "c96769b4ed00c8dd117669bad273fd54a0772ca40e81d9ddf63ac76ce1e18f65"
+    },
+    {
+      "day": 18,
+      "source": "tools/analyze.py",
+      "line": 7,
+      "line_count": 18,
+      "sha256": "ae46e60733262ff578ff081f874034d085a1a69f1d6b62db0de96b649bffc44b"
+    },
+    {
+      "day": 19,
+      "source": "tools/assets.py",
+      "line": 34,
+      "line_count": 13,
+      "sha256": "1a0a4f0937a77177daeff061024c07a07fc15622426c79b2437b715dfbb4187f"
+    },
+    {
+      "day": 20,
+      "source": "tools/ros_basics.py",
+      "line": 9,
+      "line_count": 13,
+      "sha256": "1a30d46a050e5709926045e8c70e81d8f39892367e80721cabdac1cb1d19ebc5"
+    },
+    {
+      "day": 21,
+      "source": "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "line": 54,
+      "line_count": 13,
+      "sha256": "b0beee76a91df5e5fa796efe87adfff5b10cf7f14c4ca2194089d4dcd0224d09"
+    },
+    {
+      "day": 22,
+      "source": "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "line": 82,
+      "line_count": 19,
+      "sha256": "2738c08e5beefb4921bd172c0a93dc748d087e50d74d80e4934820560c6e38b5"
+    },
+    {
+      "day": 23,
+      "source": "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "line": 29,
+      "line_count": 12,
+      "sha256": "94faec1d49304bf5221e285b46e005b3a695257dfbf4e95928488ed7de61c0ed"
+    },
+    {
+      "day": 24,
+      "source": "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "line": 61,
+      "line_count": 5,
+      "sha256": "6b23cb29dc1624d0d8dd825dc4b7b8bf0f24eba1b6f0fbc4b633f9e3e874381e"
+    },
+    {
+      "day": 25,
+      "source": "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "line": 42,
+      "line_count": 9,
+      "sha256": "2e20f30d2590cd8d9bbaefe2028665d0b225fac14e150c890790a90a19973572"
+    },
+    {
+      "day": 26,
+      "source": "tools/ros_action_test.py",
+      "line": 33,
+      "line_count": 12,
+      "sha256": "fcdeb9fdb2ae0bf98d7c7f3b6e3fde4fc498a9d801a86de2f2432fc35c9f68fa"
+    },
+    {
+      "day": 27,
+      "source": "tests/test_project.py",
+      "line": 65,
+      "line_count": 6,
+      "sha256": "0f3dde84cf33bade3befb727e340305456606f6bfedad0db2daff7f098839133"
+    },
+    {
+      "day": 28,
+      "source": "tools/course.py",
+      "line": 239,
+      "line_count": 5,
+      "sha256": "73044e7e9c5479138c83991825dc1ebc8a331563d992795e29a9cdd28a04af3a"
+    },
+    {
+      "day": 29,
+      "source": "tools/course.py",
+      "line": 157,
+      "line_count": 13,
+      "sha256": "c7d8dc119093683c75efe9ea0858503099b7c70a9bdf697842e997b0ce91806d"
+    },
+    {
+      "day": 30,
+      "source": "tools/course.py",
+      "line": 244,
+      "line_count": 1,
+      "sha256": "e118ff80bd2bf2fad82180e851db87489c05be447874fc99d42a2c1c6f0b4d3f"
+    },
+    {
+      "day": 31,
+      "source": "jetson/v4l2_camera.hpp",
+      "line": 25,
+      "line_count": 14,
+      "sha256": "c1432be86ec1d265ef3d98694a8be920dd30458e6d10dea03eab5d1a66a0c701"
+    },
+    {
+      "day": 32,
+      "source": "jetson/camera_run.cpp",
+      "line": 80,
+      "line_count": 4,
+      "sha256": "ecd04695534fd275cff587c2eb5220bd672642c17dd04df03935a264a935f986"
+    },
+    {
+      "day": 33,
+      "source": "jetson/v4l2_camera.hpp",
+      "line": 46,
+      "line_count": 2,
+      "sha256": "a5a9e6bee6b533ff6cd07cad1b0d8ba0b0c95d66a2df3fe1d5617541c6fa6642"
+    },
+    {
+      "day": 34,
+      "source": "pc/src/cuda_backend.cu",
+      "line": 166,
+      "line_count": 7,
+      "sha256": "602731252426a75d109a5ab323c486a73df4fb1cfc04253c62409395d9469b92"
+    },
+    {
+      "day": 35,
+      "source": "tools/course.py",
+      "line": 261,
+      "line_count": 4,
+      "sha256": "1309746fabc084ff3535d0bb827bc88200c9b7ad01d876a861efd6d38592a367"
+    },
+    {
+      "day": 36,
+      "source": "tools/course.py",
+      "line": 265,
+      "line_count": 1,
+      "sha256": "7fd81ec17b657a51c0930d0e1868bef074d8bc02874e55c6a2c346eb17230507"
+    },
+    {
+      "day": 37,
+      "source": "tools/course.py",
+      "line": 266,
+      "line_count": 3,
+      "sha256": "dde657eae8140a58e12f2e29223cdc9bcf0bd44ece6bb0561519d818a5abd873"
+    }
+  ],
+  "validation": "Every excerpt was extracted from the current source file; paths, unique anchors and section counts checked. No additional GPU/hardware execution claimed."
+}

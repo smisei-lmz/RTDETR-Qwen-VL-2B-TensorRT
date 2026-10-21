@@ -1,0 +1,58 @@
+{
+  "source": "models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx",
+  "source_sha256": "ae4fe7eb1fce618291e05a62fd8e6c97a5270d9b64058f2274a8851806885b61",
+  "output": "models/diagnostics/rtdetr-l-int8-all-add-fp32.onnx",
+  "output_sha256": "5c1a80dec4b882bf39cbd319a8812f1f33924e308de80eb60a460fc40ec7c3b9",
+  "restore_ops": [
+    "Add"
+  ],
+  "restored_consumers": 142,
+  "before": {
+    "Add": {
+      "total": 167,
+      "with_direct_dq_input": 142
+    },
+    "Conv": {
+      "total": 110,
+      "with_direct_dq_input": 110
+    },
+    "Gemm": {
+      "total": 7,
+      "with_direct_dq_input": 7
+    },
+    "MatMul": {
+      "total": 111,
+      "with_direct_dq_input": 96
+    },
+    "Mul": {
+      "total": 91,
+      "with_direct_dq_input": 59
+    }
+  },
+  "after": {
+    "Add": {
+      "total": 167,
+      "with_direct_dq_input": 0
+    },
+    "Conv": {
+      "total": 110,
+      "with_direct_dq_input": 110
+    },
+    "Gemm": {
+      "total": 7,
+      "with_direct_dq_input": 7
+    },
+    "MatMul": {
+      "total": 111,
+      "with_direct_dq_input": 96
+    },
+    "Mul": {
+      "total": 91,
+      "with_direct_dq_input": 59
+    }
+  },
+  "onnx_checker_passed": true,
+  "all_add_direct_qdq_bypassed": true,
+  "retained_initializers_unchanged": true,
+  "note": "Fixed-scale graph ablation. Existing six protected Add nodes remain protected. No recalibration, engine build or accuracy/speed evaluation performed."
+}

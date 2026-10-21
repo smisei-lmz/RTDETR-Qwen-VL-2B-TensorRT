@@ -1,0 +1,82 @@
+{
+  "fp32_initializers": 446,
+  "fp16_initializers": 466,
+  "common_names": 442,
+  "identical_after_cast": 432,
+  "compared_elements": 31890204,
+  "different": [
+    {
+      "name": "model.10.conv.weight",
+      "max_abs": 1.5217810869216919e-05
+    },
+    {
+      "name": "model.16.m.0.conv.weight",
+      "max_abs": 0.0001214444637298584
+    },
+    {
+      "name": "model.16.m.1.conv.weight",
+      "max_abs": 6.321072578430176e-05
+    },
+    {
+      "name": "model.16.m.2.conv.weight",
+      "max_abs": 6.102025508880615e-05
+    },
+    {
+      "name": "model.21.m.0.conv.weight",
+      "max_abs": 0.00012195110321044922
+    },
+    {
+      "name": "model.21.m.1.conv.weight",
+      "max_abs": 0.00011816620826721191
+    },
+    {
+      "name": "model.21.m.2.conv.weight",
+      "max_abs": 0.00010722875595092773
+    },
+    {
+      "name": "model.22.conv.weight",
+      "max_abs": 3.0182301998138428e-05
+    },
+    {
+      "name": "model.27.m.2.conv.weight",
+      "max_abs": 0.00034606456756591797
+    },
+    {
+      "name": "onnx::Conv_3397",
+      "max_abs": 1.5243887901306152e-05
+    }
+  ],
+  "fp32_only": [
+    "model.28.query_pos_head.layers.0.bias",
+    "model.28.query_pos_head.layers.1.bias",
+    "onnx::MatMul_3451",
+    "onnx::MatMul_3452"
+  ],
+  "fp16_only": [
+    "model.28.query_pos_head.layers.0.bias_1",
+    "model.28.query_pos_head.layers.0.bias_2",
+    "model.28.query_pos_head.layers.0.bias_3",
+    "model.28.query_pos_head.layers.0.bias_4",
+    "model.28.query_pos_head.layers.0.bias_5",
+    "model.28.query_pos_head.layers.0.bias_6",
+    "model.28.query_pos_head.layers.1.bias_1",
+    "model.28.query_pos_head.layers.1.bias_2",
+    "model.28.query_pos_head.layers.1.bias_3",
+    "model.28.query_pos_head.layers.1.bias_4",
+    "model.28.query_pos_head.layers.1.bias_5",
+    "model.28.query_pos_head.layers.1.bias_6",
+    "onnx::MatMul_3451_1",
+    "onnx::MatMul_3451_2",
+    "onnx::MatMul_3451_3",
+    "onnx::MatMul_3451_4",
+    "onnx::MatMul_3451_5",
+    "onnx::MatMul_3451_6",
+    "onnx::MatMul_3452_1",
+    "onnx::MatMul_3452_2",
+    "onnx::MatMul_3452_3",
+    "onnx::MatMul_3452_4",
+    "onnx::MatMul_3452_5",
+    "onnx::MatMul_3452_6"
+  ],
+  "note": "Checks corresponding initializer tensors after cast; does not prove graph equivalence."
+}

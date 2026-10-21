@@ -1,0 +1,36 @@
+{
+  "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx",
+  "source_sha256": "ae4fe7eb1fce618291e05a62fd8e6c97a5270d9b64058f2274a8851806885b61",
+  "count": 200,
+  "seed": 42,
+  "cases": [
+    {
+      "name": "reference_fp32",
+      "reference": "fp32"
+    },
+    {
+      "name": "current_box_add6",
+      "reference": "int8"
+    },
+    {
+      "name": "all_Add_fp32",
+      "restore_ops": [
+        "Add"
+      ]
+    },
+    {
+      "name": "all_Mul_fp32",
+      "restore_ops": [
+        "Mul"
+      ]
+    },
+    {
+      "name": "all_Add_Mul_fp32",
+      "restore_ops": [
+        "Add",
+        "Mul"
+      ]
+    }
+  ],
+  "note": "Fixed original calibration scales. A diagnostic ablation, not recalibration."
+}

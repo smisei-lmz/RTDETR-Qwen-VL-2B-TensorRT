@@ -1,0 +1,11 @@
+{
+  "built_at_utc": "2026-10-19T12:33:03.989768+00:00",
+  "tensorrt": "10.13.3.9",
+  "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32.onnx",
+  "source_sha256": "5d2acf031772d6523c17dc71f0f865bf4af57de1a73caefb6cd29eabe5fb6e59",
+  "engine": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32-trt10.engine",
+  "engine_sha256": "115aebaad59b564db258bfe3e7653bf63b6a8b05e4715b76b7c2e8a9ff8bbbd2",
+  "network_creation": "STRONGLY_TYPED",
+  "profiling_verbosity": "DETAILED",
+  "precision_note": "Types follow the ONNX graph; FP32 I/O does not imply FP32 internal computation."
+}

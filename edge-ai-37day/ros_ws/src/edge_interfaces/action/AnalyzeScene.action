@@ -1,0 +1,12 @@
+string request_id
+edge_interfaces/Snapshot snapshot
+string question
+uint32 max_new_tokens
+float32 timeout_s
+float32 max_input_age_s
+float32 max_answer_age_s
+---
+edge_interfaces/SceneAnswer answer
+---
+string phase
+float32 elapsed_ms

@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-27",
+  "platform": "Windows 11 x86_64",
+  "python": "3.12.14",
+  "compiler": "Zig 0.13.0 C++ compiler, -std=c++17 -O1, direct build; not CMake",
+  "python_ast_files": 59,
+  "package_xml_files": 2,
+  "daily_entrypoints": 37,
+  "tests": {
+    "project": 8,
+    "ros_independent_core": 13,
+    "cpp_core": "PASS",
+    "skipped": 0
+  },
+  "cpu_overload": {
+    "generated": 120,
+    "completed": 10,
+    "drop_oldest": 110,
+    "drop_no_slot": 0,
+    "queue_highwater": 2,
+    "all_slots_free": true,
+    "elapsed_s": 0.630503,
+    "latency_p50_ms": 63.5226,
+    "latency_p95_ms": 78.046,
+    "latency_p99_ms": 78.046
+  },
+  "portable_days_run": [
+    1,
+    2
+  ],
+  "not_run": [
+    "WSL Ubuntu build",
+    "CMake configure/build",
+    "CUDA compilation and kernels",
+    "TensorRT conversion/inference",
+    "ROS2 colcon and live DDS/Action integration",
+    "Qwen2-VL real model",
+    "Jetson V4L2/DMABUF/EGL",
+    "30-minute GPU/board soak",
+    "power/thermal profiling"
+  ],
+  "gpu_probe": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB, driver 572.83; discovery only"
+}

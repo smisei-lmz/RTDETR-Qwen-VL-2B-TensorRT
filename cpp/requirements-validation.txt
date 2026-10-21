@@ -1,0 +1,2 @@
+# Install into the existing TensorRT 10 environment, not a replacement runtime.
+pycocotools==2.0.11

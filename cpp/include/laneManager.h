@@ -26,11 +26,16 @@ struct FrameResult {
     std::vector<Detection> detections;
 };
 
+struct LaneConfig {
+    float confidence_threshold{0.25f};
+    int num_classes{80};
+};
+
 // One in-flight frame per lane. The shared model must outlive this object.
 // Call these methods from one host thread, or serialize access externally.
 class lane {
 public:
-    explicit lane(const SharedTrtEngine& model);
+    explicit lane(const SharedTrtEngine& model, LaneConfig config = {});
     ~lane();
     lane(const lane&) = delete;
     lane& operator=(const lane&) = delete;
@@ -60,6 +65,7 @@ private:
     int input_height_{0};
     int num_boxes_{0};
     std::uint64_t frame_id_{0};
+    LaneConfig config_;
 
     cudaEvent_t start_event_{};
     cudaEvent_t h2d_event_{};

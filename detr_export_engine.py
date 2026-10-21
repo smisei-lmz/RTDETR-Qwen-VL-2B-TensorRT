@@ -1,6 +1,9 @@
 """Build a TensorRT engine from a static-shape ONNX model (including INT8 Q/DQ)."""
 
 import argparse
+import hashlib
+import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import tensorrt as trt
@@ -84,11 +87,25 @@ def main():
 
     # Q/DQ in the ONNX graph specifies quantization; no additional INT8 flag is needed.
     config = builder.create_builder_config()
+    # Preserve actual tensor formats for the deployment manifest/precision audit.
+    config.profiling_verbosity = trt.ProfilingVerbosity.DETAILED
     serialized = builder.build_serialized_network(network, config)
     if serialized is None:
         raise RuntimeError("TensorRT engine build failed; see the TensorRT errors above.")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes(bytes(serialized))
+    metadata = {
+        "built_at_utc": datetime.now(timezone.utc).isoformat(),
+        "tensorrt": trt.__version__,
+        "source": str(source),
+        "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+        "engine": str(output),
+        "engine_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
+        "network_creation": "STRONGLY_TYPED",
+        "profiling_verbosity": "DETAILED",
+        "precision_note": "Types follow the ONNX graph; FP32 I/O does not imply FP32 internal computation.",
+    }
+    output.with_suffix(output.suffix + ".json").write_text(json.dumps(metadata, indent=2) + "\n")
     print("Saved engine:", output, flush=True)
 
 

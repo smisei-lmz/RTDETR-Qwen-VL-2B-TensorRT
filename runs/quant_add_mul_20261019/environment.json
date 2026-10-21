@@ -1,0 +1,33 @@
+{
+  "recorded_at_utc": "2026-10-19T13:37:35.562957+00:00",
+  "source": "models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx",
+  "source_sha256": "ae4fe7eb1fce618291e05a62fd8e6c97a5270d9b64058f2274a8851806885b61",
+  "fp32_sha256": "5d2acf031772d6523c17dc71f0f865bf4af57de1a73caefb6cd29eabe5fb6e59",
+  "runner_sha256": "684434ae9c4f1b538708f26ae877926da28bbfd16d01a4a19e31d98c376f5f6a",
+  "cases_sha256": "148504f78f8b646bb2aacc077d76756f3794d66acea5a2c021ac423ac16cfae5",
+  "torch": "2.14.0+cu132",
+  "onnxruntime": "1.22.0",
+  "available_providers": [
+    "TensorrtExecutionProvider",
+    "CUDAExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "command": [
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/.venv-trt10/bin/python",
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/detr_quant_sensitivity.py",
+    "--source",
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx",
+    "--float-model",
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32.onnx",
+    "--cases",
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/runs/quant_add_mul_20261019/cases.json",
+    "--directory",
+    "/home/smisei/project/RTDETR-ONNX-TensorRT/runs/quant_add_mul_20261019",
+    "--count",
+    "200",
+    "--keep-models"
+  ],
+  "scope": "Same 200-image seed42 subset, ONNX Runtime and Ultralytics metric for all variants; starting from the six-Add-protected graph; other scales fixed; no recalibration",
+  "image_list_sha256": "ad43579e524eec6659494f53c75e459510c00139e04a73a168a6c235b33249cb",
+  "matches_historical_200_images": true
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "GPU C++ two-lane correctness: invalid configuration, 0.001 evaluation threshold, CPU parity, input ownership, ROI strides, state gating, reuse, independent results and pending-work teardown",
+  "test_source_sha256": "fd7f644f7241675d4471246c78d15103207a83af0fdc476f3f6b38b0cfca7ce9",
+  "test_binary_sha256": "299023a8dabd5a31c5cf52d8f17b1db4ea211e80ddb9a2912178d93f0cc7708f",
+  "runs": [
+    {
+      "engine_key": "fp16",
+      "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+      "command": [
+        "./cpp/build-trt10/trt_lane_check"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "raw/fp16.final_lane_check.log"
+    },
+    {
+      "engine_key": "int8_add6",
+      "engine_sha256": "85cae6fa0fb1ae8e8a466da6c5a7038179ac8aefa455a592a6db3cbf24aa7bb2",
+      "command": [
+        "./cpp/build-trt10/trt_lane_check",
+        "models/rtdetr-l-int8-box-add6-fp32.engine",
+        "ultralytics/coco/images/val2017/000000147740.jpg",
+        "ultralytics/coco/images/val2017/000000057150.jpg"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "log": "raw/int8_add6.final_lane_check.log"
+    }
+  ]
+}

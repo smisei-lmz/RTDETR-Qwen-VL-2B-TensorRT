@@ -1,0 +1,607 @@
+[
+  {
+    "day": 1,
+    "title": "环境盘点与项目边界",
+    "phase": "模型与环境",
+    "prerequisites": "无",
+    "topics": "WSL、Python 虚拟环境、驱动与工具链的区别",
+    "tasks": "运行环境探针；按照环境搭建文档建立 WSL 工作目录；记录 GPU、显存、驱动、Python 和缺失依赖。",
+    "acceptance": "environment.json 存在；每个缺失组件已记录；理解探针成功不代表 CUDA/ROS 已安装。",
+    "sources": [
+      "tools/course.py",
+      "config.example.json"
+    ]
+  },
+  {
+    "day": 2,
+    "title": "可复现图像与帧身份",
+    "phase": "模型与环境",
+    "prerequisites": "01",
+    "topics": "RGB、宽高、像素布局、frame_id",
+    "tasks": "生成六张包含红色矩形的 PPM，包含奇数宽度与不同长宽比；按 manifest 手工核对一个矩形坐标。",
+    "acceptance": "六张图片字节数均为 width×height×3；manifest 与图片顺序一致。",
+    "sources": [
+      "tools/assets.py",
+      "tests/test_project.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 3,
+    "title": "真实 PyTorch 检测基线",
+    "phase": "模型与环境",
+    "prerequisites": "01；完成 PC 模型环境",
+    "topics": "Transformer 检测、query、置信度、预热",
+    "tasks": "用 RT-DETRv2-S 对真实工位照片推理；保存框、类别、环境版本、标注图和后续 VLM 图片；另换一张照片再跑一次。",
+    "acceptance": "至少一个 score≥0.35 的框；reference.json 和 reference.ppm 对应同一张图；能区分首次加载和推理耗时。",
+    "sources": [
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 4,
+    "title": "固定模型输入输出契约",
+    "phase": "模型与环境",
+    "prerequisites": "03",
+    "topics": "ONNX、NCHW、静态形状、算子图",
+    "tasks": "导出静态 batch1、640×640 的 RT-DETR ONNX，图内完成 sigmoid 与 top-k；运行 checker 和 ONNX Runtime 数值对齐。",
+    "acceptance": "detector.onnx 通过 checker 和 ORT 逐框校验；输入 images [1,3,640,640]；输出 rtdetr_detections [1,300,6]，含归一化 xyxy、score、class_id。",
+    "sources": [
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 5,
+    "title": "构建本机 TensorRT 引擎",
+    "phase": "模型与环境",
+    "prerequisites": "04；TensorRT Python 可用",
+    "topics": "FP16、引擎与 GPU/TRT 版本绑定",
+    "tasks": "通过 TensorRT Python API 构建原始 detector.plan；保存模型契约、TensorRT 版本和 SHA256；每种 GPU/软件组合单独构建。",
+    "acceptance": "detector.plan、engine_manifest.json 存在；能解释 FP16 allowed 与全部算子/I/O 为 FP16 的区别；旧模型引擎不能复用。",
+    "sources": [
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 6,
+    "title": "部署精度验证",
+    "phase": "模型与环境",
+    "prerequisites": "05",
+    "topics": "逐框匹配、IoU、mAP、独立验证集",
+    "tasks": "比较 PyTorch 与 TensorRT 框；用显式 COCO JSON 清单指定的本地数据评估 mAP；保存精度差值与数据来源。",
+    "acceptance": "置信度≥0.35 的框一对一匹配，IoU≥0.90，分数差≤0.08；不允许空结果互相通过；建议 mAP50-95 降幅≤0.01，超出须解释。",
+    "sources": [
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 7,
+    "title": "C++ 单线程基线",
+    "phase": "C++ 线程与 Buffer",
+    "prerequisites": "02；C++17 与 CMake",
+    "topics": "RAII、类接口、串行生命周期",
+    "tasks": "编译 CPU pipeline 和 core_tests；运行串行 30 帧；跟踪一帧从生成到结果的函数调用。",
+    "acceptance": "core_tests 通过；30 帧全部完成；所有 slot 归还；框坐标与红色矩形一致。",
+    "sources": [
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "pc/src/core_tests.cpp",
+      "pc/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 8,
+    "title": "采集线程与处理线程",
+    "phase": "C++ 线程与 Buffer",
+    "prerequisites": "07",
+    "topics": "std::thread、mutex、队列所有权",
+    "tasks": "运行双线程 CPU Demo；读 capture 和 submit 两段；改变 --work-ms 和 --fps，解释吞吐变化。",
+    "acceptance": "结果无重复帧身份；生成帧数=完成+丢旧帧+无空位丢帧；结束时所有 slot 归还。",
+    "sources": [
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 9,
+    "title": "固定 Buffer Pool",
+    "phase": "C++ 线程与 Buffer",
+    "prerequisites": "08",
+    "topics": "slot、generation、借用与归还",
+    "tasks": "比较 3/8 个 slot；画状态变化；通过 generation 检查理解同一 slot 的下一帧并不是上一帧。",
+    "acceptance": "两种池大小都满足计数守恒；内存不随帧数增长；能指出 acquire、publish、read、release。",
+    "sources": [
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "pc/src/core_tests.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 10,
+    "title": "背压与低延迟丢帧",
+    "phase": "C++ 线程与 Buffer",
+    "prerequisites": "09",
+    "topics": "有界队列、drop-oldest、尾延迟",
+    "tasks": "比较 queue=1/2/8；输入 120fps，模拟处理 60ms；从 JSON 记录丢帧数和 p99。",
+    "acceptance": "队列高水位不超过配置；只丢尚未提交的帧；确认大队列可能提高旧帧等待时间；不把丢帧隐藏成满帧率。",
+    "sources": [
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 11,
+    "title": "故障注入与退出",
+    "phase": "C++ 线程与 Buffer",
+    "prerequisites": "10",
+    "topics": "提前回收、错误传播、线程 join",
+    "tasks": "故意提前归还 lease；预期程序拒绝；连续启动退出十次；另在 WSL 手工 Ctrl+C 检查退出。",
+    "acceptance": "故障输出 stale/early-recycled lease 且退出码2；正常十轮 all_slots_free；Ctrl+C 验收单独记录，不能拿重复正常退出代替。",
+    "sources": [
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tests/test_project.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 12,
+    "title": "CUDA 数据路径基线",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "11；CUDA Toolkit",
+    "topics": "pinned memory、异步拷贝、stream",
+    "tasks": "编译 CUDA 后端；运行红色区域教学计算；识别 CPU→pinned 的拷贝与 pinned→GPU 的 H2D。",
+    "acceptance": "CUDA 后端实际运行；得到同样的红框；device_ms 来自 CUDA Event；明确本日尚未用神经网络。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "pc/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 13,
+    "title": "GPU 预处理正确性",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "12；02",
+    "topics": "双线性拉伸、半像素采样、RGB/NCHW、归一化",
+    "tasks": "用六张 fixture 比较 CPU 参考和 CUDA RGB→NCHW 预处理；检查奇数 padding 与不同宽高比。",
+    "acceptance": "preprocess_max_error≤0.002；失败先查坐标/颜色/归一化，不能通过放宽阈值掩盖错误。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "pc/src/cpu.cpp",
+      "tools/assets.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 14,
+    "title": "多 Stream 与完成事件",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "13",
+    "topics": "EventQuery、lane、异步完成",
+    "tasks": "比较 1/2 个 lane；定位每个 stream 的独立输入、输出、事件；可用 Nsight 检查重叠。",
+    "acceptance": "无跨帧数据污染；归还依赖完成事件；并发是否加速以实测为准；不要求两条 stream 一定更快。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 15,
+    "title": "C++ TensorRT 串行接入",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "14；05；TensorRT C++ SDK",
+    "topics": "execution context、named I/O、enqueueV3",
+    "tasks": "编译 TRT 后端，用 Day03 图片和本机 raw plan 推理；阅读 engine 契约检查和绑定。",
+    "acceptance": "产生非空真实检测结果；不支持的输入输出直接报错；不把 CUDA 红框教学模式标为 AI 推理。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "tools/model_tools.py",
+      "config.example.json",
+      "pc/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 16,
+    "title": "异步 TensorRT 检测链路",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "15",
+    "topics": "独立 context、buffer、in-flight 上限",
+    "tasks": "用两个 lane 运行；确认每 lane 有独立 execution context 和内存；比较 Day15 串行与本日异步。",
+    "acceptance": "完成结果的 session/frame 身份唯一；没有共享可写 tensor；队列有界；延迟和吞吐均记录。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 17,
+    "title": "C++ 与 Python 结果对齐",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "16；06",
+    "topics": "预处理误差、归一化坐标还原、图内 top-k 与无 NMS",
+    "tasks": "启用 tensor 校验，并将 C++ 真实框与 PyTorch 基线匹配；调查 RGB/BGR 和 padding 误差。",
+    "acceptance": "tensor 误差≤0.002；框 IoU≥0.90、分数差≤0.08；出现多/少高置信度框必须失败。",
+    "sources": [
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp",
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 18,
+    "title": "拆解性能瓶颈",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "17",
+    "topics": "事件耗时、host 延迟、p50/p95/p99",
+    "tasks": "输出各阶段耗时；可加 --profile 生成 Nsight timeline；区分 CPU 调度、H2D、预处理、推理和结果回收。",
+    "acceptance": "latency.json 有样本数和分位数；注明预热；不用 CUDA kernel 时间冒充端到端时间；CPU/GPU 测量时钟不混减。",
+    "sources": [
+      "tools/analyze.py",
+      "tools/course.py",
+      "pc/src/cuda_backend.cu",
+      "pc/include/edge.hpp"
+    ]
+  },
+  {
+    "day": 19,
+    "title": "视频回放与真实场景",
+    "phase": "CUDA 与 TensorRT",
+    "prerequisites": "18",
+    "topics": "视频解码、回放时间与曝光时间",
+    "tasks": "将真实工位视频离线转为 PPM 序列再接 C++ TRT；准备约30秒的有人、短暂遮挡、离席片段，建议 --frames 900；用新输出目录避免混入旧帧。",
+    "acceptance": "连续帧结果可用；明确回放以30fps重打时间戳，不包含离线解码耗时；真实视频用于观察 RT-DETR 漏检，合成红框只验证数据流。",
+    "sources": [
+      "tools/assets.py",
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 20,
+    "title": "ROS2 最小必需知识",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "19；ROS2 Humble",
+    "topics": "node、topic、message、executor、colcon",
+    "tasks": "构建 workspace；运行两个节点收发五条消息；学会 ros2 node/topic list 和 topic echo。",
+    "acceptance": "真实 ROS2 通信完成五次；能说明 topic 用于流式结果、Action 用于耗时问答；不要求先学导航/SLAM。",
+    "sources": [
+      "tools/ros_basics.py",
+      "ros_ws/src/edge_assistant/package.xml",
+      "ros_ws/src/edge_interfaces/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 21,
+    "title": "C++ 结果接入 ROS2",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "20；07",
+    "topics": "子进程桥、消息身份、有界交接",
+    "tasks": "启动 C++ CPU 后端与 bridge；观察 DetectionFrame；跟踪 JSONL 到 ROS 消息转换。",
+    "acceptance": "观察器收到检测消息；frame/session 对齐；桥接 reader 只保存有界最新结果；EOF/进程失败能报告。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "ros_ws/src/edge_assistant/launch/course.launch.py",
+      "tools/ros_observe.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 22,
+    "title": "独立低频图像快照",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "21；12",
+    "topics": "快照所有权、JPEG、DDS 复制",
+    "tasks": "运行 CUDA 后端并以低频发布独立快照；核对同帧图像、框和时间戳；检查最新结果不会覆盖尚未发布的快照。",
+    "acceptance": "快照含可解码图像；检测仍在推进；快照不持有原始相机 slot/FD；不宣称 JSON/JPEG/DDS 零拷贝。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "ros_ws/src/edge_assistant/launch/course.launch.py",
+      "tools/ros_observe.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 23,
+    "title": "先打通 VLM 通信闭环",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "22",
+    "topics": "Action goal/feedback/result、single-flight",
+    "tasks": "使用明确标注的 mock VLM，自动发送问题，接收反馈和回答；追踪 request_id 与快照身份。",
+    "acceptance": "完整 Action 往返；回答显示 MOCK；超时/新帧不造成答案贴错；本日不验收视觉理解能力。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "tools/ros_observe.py",
+      "ros_ws/src/edge_interfaces/action/AnalyzeScene.action",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 24,
+    "title": "真实 VLM 单张图理解",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "23；VLM Python 依赖",
+    "topics": "视觉编码器、prompt、token、显存预算",
+    "tasks": "运行 Qwen2-VL-2B 对真实图像问答；换问题和图像；记录峰值显存和回答时间。",
+    "acceptance": "调用真实模型而非 mock；回答与图像对应；不把检测特征 tensor 当 VLM 输入；显存不足时先减少图像预算并单独运行。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "tools/ask_image.py",
+      "requirements-vlm.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 25,
+    "title": "工位离席巡检与 VLM 并行运行",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "24；17；19 的真实工位视频",
+    "topics": "占用/离席状态、事件快照、VLM 按需调用、GPU 资源竞争",
+    "tasks": "先跑无模型状态演示，再用真实 TRT+ROS+Qwen 回放工位视频；确认有人2秒、持续无人10秒后触发一次巡检，保存图片和报告。",
+    "acceptance": "空场景和短暂遮挡不触发；每次离席仅一份报告；人返回或断流使旧报告失效；回答绑定事件帧；保存实际显存峰值和检测 p99。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "ros_ws/src/edge_assistant/launch/course.launch.py",
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/workstation.py",
+      "ros_ws/src/edge_assistant/launch/workstation.launch.py",
+      "tools/workstation_demo.py",
+      "工位巡检场景.md"
+    ]
+  },
+  {
+    "day": 26,
+    "title": "Action 超时、取消和忙拒绝",
+    "phase": "ROS2 与 VLM",
+    "prerequisites": "25",
+    "topics": "协作取消、过期结果、服务占用",
+    "tasks": "用可控延迟 mock 运行真实 ROS Action 集成测试，覆盖第二请求忙拒绝、取消和超时。",
+    "acceptance": "忙请求被拒；取消/超时不发布成功答案；完成结果保持 request/frame 身份；不能把接受取消当 GPU 已停。",
+    "sources": [
+      "tools/ros_action_test.py",
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "ros_ws/src/edge_assistant/edge_assistant/core.py",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 27,
+    "title": "系统回归与故障规则",
+    "phase": "PC 验收",
+    "prerequisites": "26",
+    "topics": "不变量、输入验证、回归测试",
+    "tasks": "运行项目测试、ROS 独立规则及巡检协调器回调测试、C++ 核心测试；核对断流、返回、忙状态、固定快照、超时和退出。",
+    "acceptance": "所有具备依赖的测试通过；跳过项逐项注明；CPU 过载测试计数守恒；测试通过不等于板端通过。",
+    "sources": [
+      "tests/test_project.py",
+      "ros_ws/tests/test_core.py",
+      "pc/src/core_tests.cpp",
+      "tools/course.py",
+      "ros_ws/tests/test_workstation.py",
+      "ros_ws/tests/test_coordinator_inspection.py"
+    ]
+  },
+  {
+    "day": 28,
+    "title": "PC 长时间稳定性",
+    "phase": "PC 验收",
+    "prerequisites": "27",
+    "topics": "预热、内存增长、尾延迟",
+    "tasks": "默认跑 30 分钟 TRT；用 nvidia-smi 或 Nsight 另存显存/利用率曲线；可先 --seconds 60 冒烟。",
+    "acceptance": "无异常退出；帧计数守恒；预热后 p99 可解释；显存/RSS 达到稳定区间；60 秒通过不能写成30分钟通过。",
+    "sources": [
+      "tools/course.py",
+      "tools/analyze.py",
+      "pc/include/edge.hpp",
+      "pc/src/main.cpp",
+      "pc/src/cpu.cpp"
+    ]
+  },
+  {
+    "day": 29,
+    "title": "形成可复现性能报告",
+    "phase": "PC 验收",
+    "prerequisites": "28",
+    "topics": "固定变量、版本追溯、真实性",
+    "tasks": "从 runs 汇总实际完成帧和 p99；补充模型、分辨率、输入频率、功耗模式、VLM 开关和监控数据。",
+    "acceptance": "报告只含真实运行值；没有预填 FPS；精度、延迟、丢帧、资源同时展示；列出未完成项。",
+    "sources": [
+      "tools/course.py",
+      "tools/analyze.py"
+    ]
+  },
+  {
+    "day": 30,
+    "title": "PC 工位巡检演示与交付",
+    "phase": "PC 验收",
+    "prerequisites": "29",
+    "topics": "启动配置、系统演示、迁移边界",
+    "tasks": "用真实视频演示有人、离席、报告与返回流程；另演示手工问题；保存真实图片、事件 JSON、回答、模型版本和检测延迟对比。",
+    "acceptance": "真实 RT-DETR 与 Qwen 联合运行；报告可追溯到触发帧；覆盖工位场景六项检查；不把规则模拟或纯检测稳定性等同于完整场景验收。",
+    "sources": [
+      "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "ros_ws/src/edge_assistant/launch/course.launch.py",
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/workstation.py",
+      "ros_ws/src/edge_assistant/launch/workstation.launch.py",
+      "tools/workstation_demo.py",
+      "工位巡检场景.md"
+    ]
+  },
+  {
+    "day": 31,
+    "title": "板卡软件与相机能力盘点",
+    "phase": "Jetson 迁移",
+    "prerequisites": "30；购买 Jetson 与现成驱动相机",
+    "topics": "JetPack、aarch64、V4L2 capability",
+    "tasks": "在板上运行环境与相机能力探针；记录 L4T、CUDA/TRT、格式、尺寸、stride、颜色参数和电源散热。",
+    "acceptance": "环境/格式记录齐全；单平面 YUYV 或 NV12 可用；MJPEG-only/MPLANE-only 需要新增适配，不硬套代码。",
+    "sources": [
+      "tools/course.py",
+      "jetson/v4l2_camera.hpp"
+    ]
+  },
+  {
+    "day": 32,
+    "title": "先建立相机拷贝基线",
+    "phase": "Jetson 迁移",
+    "prerequisites": "31；板端 CUDA 编译环境",
+    "topics": "DQBUF/QBUF、CPU 颜色转换",
+    "tasks": "编译 edge_camera；运行 MMAP→CPU RGB→pinned→CUDA；观察红色目标框；核实 matrix/full-range。",
+    "acceptance": "连续采集完成；无坏帧或有明确计数；CPU 读完才能 QBUF；知道这一步存在多次复制。",
+    "sources": [
+      "jetson/v4l2_camera.hpp",
+      "jetson/camera_run.cpp",
+      "jetson/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 33,
+    "title": "验证导出能力",
+    "phase": "Jetson 迁移",
+    "prerequisites": "32",
+    "topics": "EXPBUF、fd 与像素地址区别",
+    "tasks": "对 MMAP buffer 执行 EXPBUF，记录支持与否；研究 fd 所有者、关闭时机和缓存一致性。",
+    "acceptance": "capability.json 明确结果；不把导出成功等同 CUDA 可导入；不支持 EXPBUF 也要保留基线结果。",
+    "sources": [
+      "jetson/capture_probe.cpp",
+      "jetson/v4l2_camera.hpp",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 34,
+    "title": "验证 DMABUF 共享链路",
+    "phase": "Jetson 迁移",
+    "prerequisites": "33；NVIDIA multimedia headers",
+    "topics": "NvBufSurface、EGL、CUDA mapping、source event",
+    "tasks": "由 NVIDIA 分配 surface、V4L2 导入 fd；CUDA 读 YUV 写独立 RGB；对稳定红色目标比较 CPU/GPU 源解释。",
+    "acceptance": "驱动确实接受 DMABUF import；布局校验通过；source event 后才 QBUF；参考框非空且 IoU≥0.98；校验模式的 CPU 访问不计入正式共享性能。",
+    "sources": [
+      "jetson/v4l2_camera.hpp",
+      "jetson/camera_run.cpp",
+      "jetson/nv_pool.hpp",
+      "pc/src/cuda_backend.cu",
+      "jetson/CMakeLists.txt",
+      "tools/course.py"
+    ]
+  },
+  {
+    "day": 35,
+    "title": "板端 TensorRT 完整检测",
+    "phase": "Jetson 迁移",
+    "prerequisites": "34；Jetson 对应 PyTorch/TRT",
+    "topics": "引擎重建、模型对齐、统一内存",
+    "tasks": "在板上重建引擎和 PyTorch基线；先比较 Python TRT 与参考，再运行共享 camera→CUDA→TRT。",
+    "acceptance": "使用 artifacts/jetson-models 的引擎；真实场景检测；无 source 早归还；记录板端精度与耗时，不复用 PC 性能结论。",
+    "sources": [
+      "jetson/v4l2_camera.hpp",
+      "jetson/camera_run.cpp",
+      "jetson/nv_pool.hpp",
+      "pc/src/cuda_backend.cu",
+      "tools/detr_tools.py",
+      "config.example.json",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/rtdetr_backend.py",
+      "RT-DETR部署说明.md"
+    ]
+  },
+  {
+    "day": 36,
+    "title": "板端工位巡检与 VLM 资源预算",
+    "phase": "Jetson 迁移",
+    "prerequisites": "35；板端 ROS/VLM 环境",
+    "topics": "统一内存预算、慢任务隔离",
+    "tasks": "在 Jetson 以真实相机运行离席巡检；观察 TRT 与 Qwen 并发内存和尾延迟；按能力调整预算并记录部署位置。",
+    "acceptance": "真实相机事件、图像与回答身份一致；单请求和返回失效机制有效；记录共享内存与检测 p99；外部 VLM 部署需如实标注。",
+    "sources": [
+      "jetson/v4l2_camera.hpp",
+      "jetson/camera_run.cpp",
+      "jetson/nv_pool.hpp",
+      "pc/src/cuda_backend.cu",
+      "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "ros_ws/src/edge_assistant/launch/course.launch.py",
+      "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "tools/course.py",
+      "ros_ws/src/edge_assistant/edge_assistant/workstation.py",
+      "ros_ws/src/edge_assistant/launch/workstation.launch.py",
+      "tools/workstation_demo.py",
+      "工位巡检场景.md"
+    ]
+  },
+  {
+    "day": 37,
+    "title": "板端验收与项目交付",
+    "phase": "Jetson 迁移",
+    "prerequisites": "36",
+    "topics": "稳定性、故障注入、实测对比",
+    "tasks": "运行30分钟共享路径；手工测试断开相机/恢复启动/退出；另录 ROS+VLM 并发监控；整理基线与共享路径对比。",
+    "acceptance": "30分钟无越界/早归还/死锁；dequeued=completed+bad；退出 held_sources=0；报告真实性能、失败项和已验证版本。",
+    "sources": [
+      "tools/course.py",
+      "tools/analyze.py",
+      "jetson/v4l2_camera.hpp",
+      "jetson/camera_run.cpp",
+      "jetson/nv_pool.hpp",
+      "pc/src/cuda_backend.cu"
+    ]
+  }
+]

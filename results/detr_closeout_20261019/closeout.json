@@ -1,0 +1,588 @@
+{
+  "scope": "PC DETR-only deployment closeout; fixed-image performance and continuous two-image stability",
+  "passed": true,
+  "criteria": {
+    "selected_engine_quality_budget": true,
+    "artifact_hashes": true,
+    "preprocess_parity": true,
+    "lane_lifecycle": true,
+    "short_stability_check": true,
+    "long_stability_requirement": true,
+    "all_submitted_frames_collected": true,
+    "lane_destroyed": true,
+    "sample_identities": true
+  },
+  "long_stability": {
+    "required": false,
+    "waived_at_user_request": true,
+    "continuous_30_minutes_completed": false
+  },
+  "interrupted_run": {
+    "status": "interrupted_at_user_request",
+    "passed": false,
+    "requested_duration_s": 1800,
+    "last_telemetry_elapsed_s": 190.083666813,
+    "last_telemetry_completed": 20575,
+    "fully_logged_completed_frames": 20985,
+    "continuous_30_minutes_completed": false,
+    "graceful_teardown_verified": false,
+    "note": "SIGINT stopped the requested long run; retain this as partial evidence, not a completed stability pass."
+  },
+  "deployment": {
+    "model_family": "Ultralytics RT-DETR-L",
+    "engine_key": "fp16",
+    "engine": "models/rtdetr-l-fp32mix16-trt10.engine",
+    "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+    "input_shape": [
+      1,
+      3,
+      640,
+      640
+    ],
+    "output_shape": [
+      1,
+      300,
+      6
+    ],
+    "io_dtype": "float32",
+    "preprocess": "BGR uint8 -> bilinear stretch with uint8 rounding -> RGB CHW FP32 / 255; no letterbox",
+    "postprocess": "normalized cx,cy,w,h,score,COCO80 class; no extra NMS",
+    "runtime": {
+      "lanes": 1,
+      "confidence_threshold": 0.25,
+      "num_classes": 80,
+      "poll_us": 50
+    },
+    "quality_report_sha256": "2d6ffc5fb3fa0c708246629dce7535deb0aa238b0bc5e62d6b71a2e594c9ceba",
+    "scope": "PC configuration; Jetson requires a device-local engine rebuild and validation"
+  },
+  "quality": {
+    "scope": "actual C++ CUDA preprocessing + TensorRT10 + CUDA decode; COCO bbox evaluation",
+    "image_count": 4500,
+    "official_image_count": 5000,
+    "full_official_validation_set": false,
+    "dataset_sha256": "7c2d84110d7934d6c2e57cd51e820b9eba77a13c5c2914e4341f66438dc941f4",
+    "protocol": {
+      "annotations": "ultralytics/coco/annotations/instances_val2017.json",
+      "images": "ultralytics/coco/images/val2017",
+      "evaluation_threshold": 0.001,
+      "max_detections": 100,
+      "max_map_drop_absolute": 0.01,
+      "budget_note": "Declare before this closeout run: at most 1 percentage point mAP50-95 below the same TRT10 FP32 reference.",
+      "clip_boxes_to_image": true,
+      "extra_nms": false,
+      "same_backend": "TensorRT 10"
+    },
+    "results": {
+      "fp32": {
+        "map50_95": 0.5270384377742308,
+        "map50": 0.7115869161563926,
+        "map75": 0.5698759593458353,
+        "coco_stats": [
+          0.5270384377742308,
+          0.7115869161563926,
+          0.5698759593458353,
+          0.3455002465349595,
+          0.5750130114285171,
+          0.716050488070825,
+          0.3870091788615926,
+          0.6489154746352606,
+          0.7160945143711956,
+          0.5420171093282458,
+          0.7579653889419272,
+          0.8923043672277471
+        ],
+        "evaluated_images": 4500,
+        "prediction_count": 1350000,
+        "cpp_run": {
+          "passed": true,
+          "mode": "dataset",
+          "requested_duration_s": 0,
+          "elapsed_s": 63.261575524,
+          "submitted": 4500,
+          "completed": 4500,
+          "failed": 0,
+          "dropped": 0,
+          "lanes": 1,
+          "warmup": 30,
+          "threshold": 0.0010000000475,
+          "image_count": 4500,
+          "all_frames_collected": true,
+          "lane_destroyed": true,
+          "rss_before_bytes": 459517952,
+          "rss_after_bytes": 460943360,
+          "device_free_before_bytes": 7042236416,
+          "device_free_after_bytes": 7042236416,
+          "device_free_engine_only_bytes": 7201619968,
+          "device_free_after_lane_teardown_bytes": 7201619968,
+          "device_memory_scope": "whole device; may include other processes",
+          "latency_scope": "submit through collect; excludes image decode and CSV writes"
+        },
+        "map_drop_from_fp32": 0.0,
+        "within_budget": true
+      },
+      "fp16": {
+        "map50_95": 0.5267473061298292,
+        "map50": 0.711833888360737,
+        "map75": 0.5691466872318169,
+        "coco_stats": [
+          0.5267473061298292,
+          0.711833888360737,
+          0.5691466872318169,
+          0.3449916013301751,
+          0.5747357506585752,
+          0.7169613722605019,
+          0.3868145381489252,
+          0.6484414841306412,
+          0.7158911631413423,
+          0.5415630873192503,
+          0.7576214562200332,
+          0.8929424812177128
+        ],
+        "evaluated_images": 4500,
+        "prediction_count": 1350000,
+        "cpp_run": {
+          "passed": true,
+          "mode": "dataset",
+          "requested_duration_s": 0,
+          "elapsed_s": 53.348481273,
+          "submitted": 4500,
+          "completed": 4500,
+          "failed": 0,
+          "dropped": 0,
+          "lanes": 1,
+          "warmup": 30,
+          "threshold": 0.0010000000475,
+          "image_count": 4500,
+          "all_frames_collected": true,
+          "lane_destroyed": true,
+          "rss_before_bytes": 474644480,
+          "rss_after_bytes": 476041216,
+          "device_free_before_bytes": 7191134208,
+          "device_free_after_bytes": 7191134208,
+          "device_free_engine_only_bytes": 7289700352,
+          "device_free_after_lane_teardown_bytes": 7268728832,
+          "device_memory_scope": "whole device; may include other processes",
+          "latency_scope": "submit through collect; excludes image decode and CSV writes"
+        },
+        "map_drop_from_fp32": 0.00029113164440153216,
+        "within_budget": true
+      },
+      "int8_add6": {
+        "map50_95": 0.47688034602632384,
+        "map50": 0.6849271159156658,
+        "map75": 0.5130888268708353,
+        "coco_stats": [
+          0.47688034602632384,
+          0.6849271159156658,
+          0.5130888268708353,
+          0.27679143264073797,
+          0.5401413914816209,
+          0.687065142971956,
+          0.3602471623614437,
+          0.6027360081477797,
+          0.6675264547366292,
+          0.4533296033293466,
+          0.7305193406851893,
+          0.8793367556043574
+        ],
+        "evaluated_images": 4500,
+        "prediction_count": 1350000,
+        "cpp_run": {
+          "passed": true,
+          "mode": "dataset",
+          "requested_duration_s": 0,
+          "elapsed_s": 46.282914643,
+          "submitted": 4500,
+          "completed": 4500,
+          "failed": 0,
+          "dropped": 0,
+          "lanes": 1,
+          "warmup": 30,
+          "threshold": 0.0010000000475,
+          "image_count": 4500,
+          "all_frames_collected": true,
+          "lane_destroyed": true,
+          "rss_before_bytes": 518410240,
+          "rss_after_bytes": 519880704,
+          "device_free_before_bytes": 7275020288,
+          "device_free_after_bytes": 7275020288,
+          "device_free_engine_only_bytes": 7321157632,
+          "device_free_after_lane_teardown_bytes": 7319060480,
+          "device_memory_scope": "whole device; may include other processes",
+          "latency_scope": "submit through collect; excludes image decode and CSV writes"
+        },
+        "map_drop_from_fp32": 0.05015809174790692,
+        "within_budget": false
+      }
+    },
+    "selected_deployment": "fp16",
+    "selection_reason": "Prefer the planned mixed-FP16 baseline if within the predeclared 1pp budget; otherwise retain FP32. INT8 remains an experiment."
+  },
+  "preprocessing": {
+    "engine": "models/rtdetr-l-fp32mix16-trt10.engine",
+    "image": "ultralytics/coco/images/val2017/000000147740.jpg",
+    "width": 640,
+    "height": 480,
+    "opencv_version": "4.5.4",
+    "opencv_threads": 1,
+    "cpu_preprocess": "OpenCV resize+cvtColor+convertTo+split",
+    "cpu_staging": 0,
+    "iterations_per_mode": 200,
+    "warmup_per_mode": 30,
+    "lanes": 1,
+    "h2d_cpu_bytes": 4915200,
+    "h2d_cuda_bytes": 921600,
+    "d2h_cpu_bytes": 7200,
+    "d2h_cuda_bytes": 7204,
+    "input_max_abs": 5.96046448e-08,
+    "output_max_abs": 0,
+    "postprocess_box_max_abs": 0,
+    "detections": 21,
+    "cpu": {
+      "cpu_prepare": {
+        "mean_ms": 1.94237154,
+        "median_ms": 1.690108,
+        "p95_ms": 3.176439
+      },
+      "h2d": {
+        "mean_ms": 0.40603776,
+        "median_ms": 0.36289601,
+        "p95_ms": 0.58288002
+      },
+      "gpu_pre": {
+        "mean_ms": 0,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "infer": {
+        "mean_ms": 8.85425169,
+        "median_ms": 8.79409599,
+        "p95_ms": 10.0635204
+      },
+      "gpu_post": {
+        "mean_ms": 0,
+        "median_ms": 0,
+        "p95_ms": 0
+      },
+      "d2h": {
+        "mean_ms": 0.0597278401,
+        "median_ms": 0.0568480007,
+        "p95_ms": 0.0756160021
+      },
+      "cpu_post": {
+        "mean_ms": 0.002948515,
+        "median_ms": 0.00216,
+        "p95_ms": 0.00779
+      },
+      "total": {
+        "mean_ms": 11.4110427,
+        "median_ms": 11.133215,
+        "p95_ms": 13.37569
+      }
+    },
+    "cuda": {
+      "cpu_prepare": {
+        "mean_ms": 0.152004435,
+        "median_ms": 0.115646,
+        "p95_ms": 0.218322
+      },
+      "h2d": {
+        "mean_ms": 0.0815628796,
+        "median_ms": 0.0687360018,
+        "p95_ms": 0.157120004
+      },
+      "gpu_pre": {
+        "mean_ms": 0.15724912,
+        "median_ms": 0.147135995,
+        "p95_ms": 0.245471999
+      },
+      "infer": {
+        "mean_ms": 8.71875261,
+        "median_ms": 8.62443161,
+        "p95_ms": 10.2574396
+      },
+      "gpu_post": {
+        "mean_ms": 0.00656848004,
+        "median_ms": 0.00409599999,
+        "p95_ms": 0.0064960001
+      },
+      "d2h": {
+        "mean_ms": 0.0619876801,
+        "median_ms": 0.0596639998,
+        "p95_ms": 0.0800319985
+      },
+      "cpu_post": {
+        "mean_ms": 0.0009112,
+        "median_ms": 0.000775,
+        "p95_ms": 0.00163
+      },
+      "total": {
+        "mean_ms": 9.31943494,
+        "median_ms": 9.149605,
+        "p95_ms": 10.913777
+      }
+    }
+  },
+  "lane_benchmark": {
+    "engine": "models/rtdetr-l-fp32mix16-trt10.engine",
+    "image": "ultralytics/coco/images/val2017/000000147740.jpg",
+    "source_width": 640,
+    "source_height": 480,
+    "frames_per_round": 500,
+    "warmup_per_lane": 30,
+    "rounds": 5,
+    "poll_us": 50,
+    "profiled": false,
+    "scope": "closed-loop fixed-image throughput; latency from submit start to collected CPU result; excludes decode, admission wait and ROS",
+    "percentile_method": "nearest_rank",
+    "runs": [
+      {
+        "round": 0,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4569.499261,
+        "fps": 109.421179749,
+        "process_cpu_ms": 2016.596,
+        "latency_mean_ms": 9.138580378,
+        "latency_p50_ms": 8.993156,
+        "latency_p95_ms": 10.334984,
+        "latency_p99_ms": 13.577774
+      },
+      {
+        "round": 0,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4525.786131,
+        "fps": 110.478044151,
+        "process_cpu_ms": 2190.797,
+        "latency_mean_ms": 18.078442284,
+        "latency_p50_ms": 17.875041,
+        "latency_p95_ms": 21.276345,
+        "latency_p99_ms": 24.383339
+      },
+      {
+        "round": 1,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4437.660218,
+        "fps": 112.671988264,
+        "process_cpu_ms": 1947.243,
+        "latency_mean_ms": 17.724281304,
+        "latency_p50_ms": 17.600098,
+        "latency_p95_ms": 19.872221,
+        "latency_p99_ms": 21.519631
+      },
+      {
+        "round": 1,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4555.061273,
+        "fps": 109.768007505,
+        "process_cpu_ms": 1892.372,
+        "latency_mean_ms": 9.109640026,
+        "latency_p50_ms": 8.999137,
+        "latency_p95_ms": 10.405867,
+        "latency_p99_ms": 11.335808
+      },
+      {
+        "round": 2,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4512.467198,
+        "fps": 110.804129551,
+        "process_cpu_ms": 1839.477,
+        "latency_mean_ms": 9.024561854,
+        "latency_p50_ms": 9.009415,
+        "latency_p95_ms": 10.228082,
+        "latency_p99_ms": 10.79013
+      },
+      {
+        "round": 2,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4330.916692,
+        "fps": 115.448999729,
+        "process_cpu_ms": 1791.644,
+        "latency_mean_ms": 17.300752128,
+        "latency_p50_ms": 17.281452,
+        "latency_p95_ms": 18.47229,
+        "latency_p99_ms": 19.180378
+      },
+      {
+        "round": 3,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4353.68695,
+        "fps": 114.845188858,
+        "process_cpu_ms": 1811.948,
+        "latency_mean_ms": 17.390039702,
+        "latency_p50_ms": 17.423274,
+        "latency_p95_ms": 18.58371,
+        "latency_p99_ms": 19.329212
+      },
+      {
+        "round": 3,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4442.085758,
+        "fps": 112.559735953,
+        "process_cpu_ms": 1705.484,
+        "latency_mean_ms": 8.883788814,
+        "latency_p50_ms": 8.852439,
+        "latency_p95_ms": 10.022007,
+        "latency_p99_ms": 10.509514
+      },
+      {
+        "round": 4,
+        "lanes": 1,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4507.193973,
+        "fps": 110.933765663,
+        "process_cpu_ms": 1883.735,
+        "latency_mean_ms": 9.014002744,
+        "latency_p50_ms": 8.89278,
+        "latency_p95_ms": 10.260146,
+        "latency_p99_ms": 11.468117
+      },
+      {
+        "round": 4,
+        "lanes": 2,
+        "submitted": 500,
+        "completed": 500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 4512.679951,
+        "fps": 110.798905624,
+        "process_cpu_ms": 2039.67,
+        "latency_mean_ms": 18.026724112,
+        "latency_p50_ms": 17.783397,
+        "latency_p95_ms": 20.308641,
+        "latency_p99_ms": 21.476454
+      }
+    ],
+    "aggregate": [
+      {
+        "round": -1,
+        "lanes": 1,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 22586.307463,
+        "fps": 110.686530062,
+        "process_cpu_ms": 9337.664,
+        "latency_mean_ms": 9.0341147632,
+        "latency_p50_ms": 8.962526,
+        "latency_p95_ms": 10.250229,
+        "latency_p99_ms": 11.293673
+      },
+      {
+        "round": -1,
+        "lanes": 2,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 22160.729942,
+        "fps": 112.812168486,
+        "process_cpu_ms": 9781.302,
+        "latency_mean_ms": 17.704047906,
+        "latency_p50_ms": 17.55774,
+        "latency_p95_ms": 19.856249,
+        "latency_p99_ms": 21.878602
+      }
+    ]
+  },
+  "stability": {
+    "passed": true,
+    "mode": "stability",
+    "requested_duration_s": 5,
+    "elapsed_s": 5.007710424,
+    "submitted": 550,
+    "completed": 550,
+    "failed": 0,
+    "dropped": 0,
+    "lanes": 1,
+    "warmup": 30,
+    "threshold": 0.25,
+    "image_count": 2,
+    "all_frames_collected": true,
+    "lane_destroyed": true,
+    "rss_before_bytes": 471437312,
+    "rss_after_bytes": 471580672,
+    "device_free_before_bytes": 7191134208,
+    "device_free_after_bytes": 7191134208,
+    "device_free_engine_only_bytes": 7289700352,
+    "device_free_after_lane_teardown_bytes": 7268728832,
+    "device_memory_scope": "whole device; may include other processes",
+    "latency_scope": "submit through collect; excludes image decode and CSV writes",
+    "target_seconds": 5,
+    "duration_met": true,
+    "sample_count_matches": true,
+    "latency_mean_ms": 9.09160533272728,
+    "latency_p50_ms": 9.076854,
+    "latency_p95_ms": 10.139011,
+    "latency_p99_ms": 10.950991,
+    "percentile_method": "nearest_rank",
+    "second_half_rss_range_bytes": 0.0,
+    "second_half_device_free_range_bytes": 0.0,
+    "memory_note": "RSS is this C++ process; device free memory covers the whole GPU. Ranges alone do not prove absence of all leaks.",
+    "scope": "closed-loop two preloaded images, repeated-output equality each frame; no video arrival queue or ROS",
+    "engine_key": "fp16",
+    "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+    "images": [
+      {
+        "path": "ultralytics/coco/images/val2017/000000147740.jpg",
+        "sha256": "0384b4bff79f53a0f2bcc54c99c0f7dc24660dd33f37c9b6dfa6adaa1e4a88ce"
+      },
+      {
+        "path": "ultralytics/coco/images/val2017/000000057150.jpg",
+        "sha256": "ae7e6f712229d1ab128aab94e4b358c2dd58b63af4e45438bf9aa0d089eb963f"
+      }
+    ],
+    "plan_30_minute_requirement_met": false
+  },
+  "memory_observation": {
+    "second_half_rss_slope_kib_per_minute": 0.0,
+    "rss_end_minus_start_bytes": 143360,
+    "trend_source": "interrupted long-run telemetry",
+    "observed_rss_range_bytes": 118784.0,
+    "observed_device_free_range_bytes": 0.0,
+    "device_free_after_lane_teardown_minus_before_bytes": 77594624,
+    "note": "RSS belongs to the C++ process. cudaMemGetInfo observes the entire GPU. CUDA module/cache memory can remain while the engine/process lives."
+  },
+  "remaining_system_validation": [
+    "labeled workstation videos and event behavior",
+    "ROS integration",
+    "VLM co-running",
+    "Jetson"
+  ]
+}

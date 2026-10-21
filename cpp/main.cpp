@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
             return 0;
         }
         const fs::path root(RTDETR_PROJECT_DIR);
-        fs::path engine_path = root / "models/rtdetr-l-int8-box-add6-fp32.engine";
+        fs::path engine_path = root / "models/rtdetr-l-fp32mix16-trt10.engine";
         fs::path image_path = root / "ultralytics/coco/images/val2017/000000147740.jpg";
         fs::path result_path = root / "results/rtdetr_result.jpg";
         fs::path dump_prefix;

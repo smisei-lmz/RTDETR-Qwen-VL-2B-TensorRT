@@ -32,7 +32,8 @@ struct Stream {
 };
 
 // Independent CPU preprocessing/postprocessing reference, sharing only the engine.
-std::vector<Detection> reference(const SharedTrtEngine& model, const cv::Mat& image) {
+std::vector<Detection> reference(const SharedTrtEngine& model, const cv::Mat& image,
+                                 float threshold = 0.25f) {
     std::vector<float> input(model.inputSize()), output(model.outputSize());
     OpenCVPreprocessWorkspace workspace;
     workspace.create(model.inputWidth(), model.inputHeight());
@@ -55,7 +56,7 @@ std::vector<Detection> reference(const SharedTrtEngine& model, const cv::Mat& im
     check(cudaMemcpyAsync(output.data(), buffers.output_device(), output.size() * sizeof(float),
                           cudaMemcpyDeviceToHost, stream.value));
     check(cudaStreamSynchronize(stream.value));
-    return Postprocessor::decode(output.data(), model.outputSize() / 6, 0.25f,
+    return Postprocessor::decode(output.data(), model.outputSize() / 6, threshold,
                                  image.cols, image.rows, 80);
 }
 
@@ -117,7 +118,7 @@ int main(int argc, char** argv) {
         require(argc == 1 || argc == 4, "Expected engine and two images, or no arguments");
         const std::filesystem::path root(RTDETR_PROJECT_DIR);
         const auto engine_path = argc == 4 ? std::filesystem::path(argv[1])
-            : root / "models/rtdetr-l-int8-box-add6-fp32.engine";
+            : root / "models/rtdetr-l-fp32mix16-trt10.engine";
         const auto image_a_path = argc == 4 ? std::filesystem::path(argv[2])
             : root / "ultralytics/coco/images/val2017/000000147740.jpg";
         const auto image_b_path = argc == 4 ? std::filesystem::path(argv[3])
@@ -129,6 +130,18 @@ int main(int argc, char** argv) {
 
         SharedTrtEngine model;
         require(model.loadEngine(engine_path.string()), "Cannot load model");
+        bool invalid_config_rejected = false;
+        try {
+            lane invalid(model, LaneConfig{-0.1f, 80});
+        } catch (const std::invalid_argument&) {
+            invalid_config_rejected = true;
+        }
+        require(invalid_config_rejected, "Invalid threshold was accepted");
+        {
+            lane evaluation(model, LaneConfig{0.001f, 80});
+            require(evaluation.submit(image_a, 10), "Cannot submit evaluation frame");
+            compare(waitCollect(evaluation), 10, reference(model, image_a, 0.001f));
+        }
         const auto expected_a = reference(model, image_a);
         const auto expected_b = reference(model, image_b);
         lane first(model), second(model);
@@ -186,7 +199,7 @@ int main(int argc, char** argv) {
             // No query/collect: the destructor must wait before releasing resources.
         }
         check(cudaDeviceSynchronize());
-        std::cout << "PASS: two lanes, CPU parity, input ownership, ROI strides, state gating, "
+        std::cout << "PASS: threshold configuration, two lanes, CPU parity, input ownership, ROI strides, state gating, "
                      "reuse, independent results, and pending-work teardown\n";
         return 0;
     } catch (const std::exception& error) {

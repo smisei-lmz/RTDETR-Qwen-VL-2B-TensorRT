@@ -1,0 +1,44 @@
+{
+  "recorded_at": "2026-10-14T13:11:51.944004+08:00",
+  "change": "RT-DETRv2-S and workstation departure inspection",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "compiler": "MSVC 2022 C++17 /O1, validation/build_cpu.cmd; direct build, not CMake",
+  "tests": {
+    "project": 8,
+    "ros_independent": 37,
+    "cpp_core": "PASS",
+    "skipped": 0
+  },
+  "source_checks": {
+    "python_ast_files": 68,
+    "package_xml_files": 2,
+    "daily_entrypoints": 37
+  },
+  "handbook_excerpts": 37,
+  "cpu_overload": {
+    "generated": 120,
+    "completed": 11,
+    "drop_oldest": 109,
+    "drop_no_slot": 0,
+    "queue_highwater": 2,
+    "all_slots_free": true,
+    "elapsed_s": 0.694677,
+    "latency_p50_ms": 78.0168,
+    "latency_p95_ms": 125.053,
+    "latency_p99_ms": 125.053
+  },
+  "rule_demo": "MOCK_RULE_ONLY; state logic only, no detector/VLM",
+  "not_run": [
+    "WSL/CMake build",
+    "RT-DETR PyTorch model inference",
+    "ONNX export and ONNX Runtime parity",
+    "CUDA compilation/kernels",
+    "TensorRT build/inference and COCO mAP",
+    "ROS2 colcon and live DDS/Action",
+    "Real Qwen2-VL",
+    "Real workstation video end-to-end",
+    "Jetson camera/DMABUF/EGL",
+    "30-minute GPU soak and thermal/power profiling"
+  ]
+}

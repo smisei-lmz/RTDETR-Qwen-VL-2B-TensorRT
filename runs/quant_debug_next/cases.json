@@ -1,0 +1,6 @@
+[
+  {"name": "reference_fp32", "reference": "fp32"},
+  {"name": "current_box_add6", "reference": "int8"},
+  {"name": "keep_Conv_MatMul_Gemm", "keep_ops": ["Conv", "MatMul", "Gemm"]},
+  {"name": "keep_Conv_only", "keep_ops": ["Conv"]}
+]

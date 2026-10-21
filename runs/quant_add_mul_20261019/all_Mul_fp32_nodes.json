@@ -1,0 +1,238 @@
+[
+  {
+    "name": "/model.11/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.11/ma/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.11/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.11/act/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.12/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.16/cv1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.16/cv2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.16/m/m.0/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.16/m/m.1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.16/m/m.2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.17/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.21/cv1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.21/cv2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.21/m/m.0/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.21/m/m.1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.21/m/m.2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.22/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.24/cv1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.24/cv2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.24/m/m.0/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.24/m/m.1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.24/m/m.2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.25/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.27/cv1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.27/cv2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.27/m/m.0/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.27/m/m.1/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.27/m/m.2/act/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Mul_5",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.0/cross_attn/Mul_7",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Mul_2",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.1/cross_attn/Mul_4",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Mul_2",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.2/cross_attn/Mul_4",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Mul_2",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.3/cross_attn/Mul_4",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Mul_2",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.4/cross_attn/Mul_4",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/self_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Mul",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Mul_1",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Mul_2",
+    "op": "Mul"
+  },
+  {
+    "name": "/model.28/decoder/layers.5/cross_attn/Mul_4",
+    "op": "Mul"
+  }
+]

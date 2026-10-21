@@ -1,0 +1,153 @@
+{
+  "status": "interrupted_at_user_request",
+  "passed": false,
+  "requested_duration_s": 1800,
+  "last_telemetry_elapsed_s": 190.083666813,
+  "last_telemetry_completed": 20575,
+  "fully_logged_completed_frames": 20985,
+  "continuous_30_minutes_completed": false,
+  "graceful_teardown_verified": false,
+  "note": "SIGINT stopped the requested long run; retain this as partial evidence, not a completed stability pass.",
+  "memory_samples": [
+    {
+      "elapsed_s": 0.00012532,
+      "completed": 0.0,
+      "rss_bytes": 471457792.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 10.003561025,
+      "completed": 1021.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 20.004360527,
+      "completed": 2116.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 30.008927177,
+      "completed": 3203.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 40.01740457,
+      "completed": 4273.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 50.020468317,
+      "completed": 5352.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 60.022328601,
+      "completed": 6431.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 70.027135437,
+      "completed": 7506.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 80.031241954,
+      "completed": 8583.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 90.032165356,
+      "completed": 9643.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 100.038536895,
+      "completed": 10708.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 110.040844351,
+      "completed": 11780.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 120.049799974,
+      "completed": 12892.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 130.056796582,
+      "completed": 13997.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 140.05863715,
+      "completed": 15104.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 150.065280896,
+      "completed": 16207.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 160.067114234,
+      "completed": 17295.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 170.073070997,
+      "completed": 18381.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 180.073871856,
+      "completed": 19473.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    },
+    {
+      "elapsed_s": 190.083666813,
+      "completed": 20575.0,
+      "rss_bytes": 471576576.0,
+      "device_free_bytes": 7191134208.0,
+      "device_total_bytes": 8546484224.0
+    }
+  ]
+}

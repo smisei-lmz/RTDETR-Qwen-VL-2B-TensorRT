@@ -97,9 +97,9 @@ int main(int argc, char** argv) {
             return 0;
         }
         const fs::path root(RTDETR_PROJECT_DIR);
-        fs::path engine_path = root / "models/rtdetr-l-int8-box-add6-fp32.engine";
+        fs::path engine_path = root / "models/rtdetr-l-fp32mix16-trt10.engine";
         fs::path image_path = root / "ultralytics/coco/images/val2017/000000147740.jpg";
-        fs::path prefix = root / "results/benchmark_single_lane";
+        fs::path prefix = root / "results/benchmark_fp16_single_lane";
         int iterations = 200, warmup = 30, threads = 1, cpu_staging = 0, arg = 1;
         if (arg < argc && std::string(argv[arg]).rfind("--", 0) != 0) {
             if (argc < 4) throw std::runtime_error("Expected engine, image and output prefix");

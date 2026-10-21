@@ -1,0 +1,7 @@
+[
+  {"name": "reference_fp32", "reference": "fp32"},
+  {"name": "current_box_add6", "reference": "int8"},
+  {"name": "all_Add_fp32", "restore_ops": ["Add"]},
+  {"name": "all_Mul_fp32", "restore_ops": ["Mul"]},
+  {"name": "all_Add_Mul_fp32", "restore_ops": ["Add", "Mul"]}
+]

@@ -1,0 +1,2 @@
+/home/smisei/project/RTDETR-ONNX-TensorRT/ultralytics/coco/images/val2017/000000147740.jpg
+/home/smisei/project/RTDETR-ONNX-TensorRT/ultralytics/coco/images/val2017/000000057150.jpg

@@ -1,0 +1,51 @@
+{
+  "recorded_at_utc": "2026-10-19T12:49:25.506714+00:00",
+  "python": "3.10.21 (main, Aug 27 2026, 14:42:07) [GCC 14.3.0]",
+  "tensorrt": "10.13.3.9",
+  "pycocotools": "2.0.11",
+  "config_sha256": "670b88efbcd6a6b8959f3b32b51743d875b98808fed6498af7c8f6e30a2ac0c4",
+  "git": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "output": "d0a3af882db2c6460b225b0f620807ddbdafdf16"
+  },
+  "git_status": {
+    "command": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "exit_code": 0,
+    "output": "M .gitignore\n M cpp/CMakeLists.txt\n M cpp/README.md\n M cpp/benchmark.cpp\n M cpp/include/laneManager.h\n M cpp/lane_check.cpp\n M cpp/main.cpp\n M cpp/src/laneManager.cpp\n M detr_export_engine.py\n ? ultralytics\n?? cpp/OPTIMIZATION_REPORT.md\n?? cpp/analyze_closeout.py\n?? cpp/analyze_optimizations.py\n?? cpp/closeout.py\n?? cpp/config/\n?? cpp/lane_benchmark.cpp\n?? cpp/lane_validate.cpp\n?? cpp/requirements-validation.txt\n?? edge-ai-37day/\n?? models/\n?? results/detr_closeout_20261019/\n?? results/detr_closeout_smoke_20261019/\n?? results/lane_benchmark_20261017.environment.json\n?? results/lane_benchmark_20261017.samples.csv\n?? results/lane_benchmark_20261017.summary.json\n?? results/optimization_analysis_20261017.json"
+  },
+  "gpu": {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=name,driver_version,memory.total,memory.used",
+      "--format=csv,noheader"
+    ],
+    "exit_code": 0,
+    "output": "NVIDIA GeForce RTX 5060, 610.62, 8151 MiB, 2904 MiB"
+  },
+  "cuda": {
+    "command": [
+      "/usr/local/cuda-13.4/bin/nvcc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "output": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2026 NVIDIA Corporation\nBuilt on Mon_Aug_03_13:24:11_PDT_2026\nCuda compilation tools, release 13.4, V13.4.59\nBuild cuda_13.4.r13.4/compiler.38657139_0"
+  },
+  "source_sha256": {
+    "cpp/closeout.py": "62663b0b9ccf67231b06afaf654ade3448a785a0d966f677a0b9a84b58fd1243",
+    "cpp/lane_validate.cpp": "df1bbfe0a056409e7b4bbb58113e36c35d3b84fdc75d1b88736fd7ffbfe9801d",
+    "cpp/src/laneManager.cpp": "fd8b7b8dfbd188f7be9e4bcbcf22fa319be5a0ec7c1893d81407f5fd9c10035c",
+    "cpp/include/laneManager.h": "2836e31b501d76d09bc2f7fe002bfafe046d548ef59d112beb6420b304322278",
+    "cpp/src/CudaPreprocess.cu": "85f483c832b2b4fe9dc0643c208ead8de25dc65c889b3dce02616109a2636cbc",
+    "cpp/src/CudaPostprocess.cu": "ed6e816d156c8a13b7a02284e95a03db90f0c6c2121a3082323d284165e9405c"
+  },
+  "binary_sha256": "add7d3ea9f382a3303761c2f817e165ab42eedcb0475a99652ab23d1c8dafb78"
+}

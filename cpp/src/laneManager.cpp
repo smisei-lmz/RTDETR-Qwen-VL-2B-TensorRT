@@ -1,7 +1,9 @@
 #include "laneManager.h"
 #include "CudaPostprocess.h"
+#include "nvtx_range.h"
 
 #include <cstring>
+#include <cmath>
 #include <initializer_list>
 #include <limits>
 #include <stdexcept>
@@ -14,13 +16,15 @@ void checkCudaEvent(cudaError_t status) {
     }
 }
 
-// Match the existing COCO RT-DETR benchmark.
-constexpr float confidence_threshold = 0.25f;
-constexpr int num_classes = 80;
 static_assert(alignof(Detection) <= alignof(int), "Detection packet alignment");
 }
 
-lane::lane(const SharedTrtEngine& model) {
+lane::lane(const SharedTrtEngine& model, LaneConfig config) : config_(config) {
+    if (!std::isfinite(config_.confidence_threshold) ||
+        config_.confidence_threshold < 0 || config_.confidence_threshold > 1 ||
+        config_.num_classes <= 0) {
+        throw std::invalid_argument("Invalid lane confidence threshold or class count");
+    }
     if (!model.engine()) {
         throw std::runtime_error("Shared engine is not loaded");
     }
@@ -70,6 +74,7 @@ bool lane::submit(const cv::Mat& image, std::uint64_t frame_id) {
     if (state_ != LaneState::Idle) {
         return false;
     }
+    NvtxRange submission("lane.submit");
     if (image.empty() || image.dims != 2 || image.type() != CV_8UC3) {
         throw std::invalid_argument("Expected a nonempty CV_8UC3 BGR image");
     }
@@ -83,61 +88,79 @@ bool lane::submit(const cv::Mat& image, std::uint64_t frame_id) {
     const auto raw_bytes = row_bytes * static_cast<std::size_t>(image.rows);
 
     try {
-        // Only an idle lane may resize or overwrite its buffers.
-        if (raw_bytes > raw_capacity_) {
-            if (host_raw_) {
-                checkCudaEvent(cudaFreeHost(host_raw_));
-                host_raw_ = nullptr;
-                raw_capacity_ = 0;
+        {
+            NvtxRange preparation("lane.cpu_stage");
+            // Only an idle lane may resize or overwrite its buffers.
+            if (raw_bytes > raw_capacity_) {
+                if (host_raw_) {
+                    checkCudaEvent(cudaFreeHost(host_raw_));
+                    host_raw_ = nullptr;
+                    raw_capacity_ = 0;
+                }
+                checkCudaEvent(cudaMallocHost(&host_raw_, raw_bytes));
+                raw_capacity_ = raw_bytes;
             }
-            checkCudaEvent(cudaMallocHost(&host_raw_, raw_bytes));
-            raw_capacity_ = raw_bytes;
-        }
-        if (!buffers_.ensureRawCapacity(raw_bytes)) {
-            throw std::runtime_error("Cannot allocate GPU image buffer");
-        }
-        checkCudaEvent(preprocessor_.configureResize(
-            image.cols, image.rows, input_width_, input_height_));
+            if (!buffers_.ensureRawCapacity(raw_bytes)) {
+                throw std::runtime_error("Cannot allocate GPU image buffer");
+            }
+            checkCudaEvent(preprocessor_.configureResize(
+                image.cols, image.rows, input_width_, input_height_));
 
-        // Own the pixels before returning, including non-contiguous cv::Mat ROIs.
-        if (image.isContinuous()) {
-            std::memcpy(host_raw_, image.data, raw_bytes);
-        } else {
-            auto* destination = static_cast<unsigned char*>(host_raw_);
-            for (int y = 0; y < image.rows; ++y) {
-                std::memcpy(destination + static_cast<std::size_t>(y) * row_bytes,
-                            image.ptr<unsigned char>(y), row_bytes);
+            // Own the pixels before returning, including non-contiguous cv::Mat ROIs.
+            if (image.isContinuous()) {
+                std::memcpy(host_raw_, image.data, raw_bytes);
+            } else {
+                auto* destination = static_cast<unsigned char*>(host_raw_);
+                for (int y = 0; y < image.rows; ++y) {
+                    std::memcpy(destination + static_cast<std::size_t>(y) * row_bytes,
+                                image.ptr<unsigned char>(y), row_bytes);
+                }
             }
         }
         frame_id_ = frame_id;
         // Set before the first enqueue: a partial submission must never be reused.
         state_ = LaneState::Running;
 
-        checkCudaEvent(cudaEventRecord(start_event_, stream_));
-        checkCudaEvent(cudaMemcpyAsync(buffers_.raw_device(), host_raw_, raw_bytes,
-                                       cudaMemcpyHostToDevice, stream_));
-        checkCudaEvent(cudaEventRecord(h2d_event_, stream_));
-
-        checkCudaEvent(preprocessor_.resizeNormalize(
-            static_cast<const unsigned char*>(buffers_.raw_device()),
-            static_cast<int>(row_bytes),
-            static_cast<float*>(buffers_.input_device()), stream_));
-        if (!context_->enqueueV3(stream_)) {
-            throw std::runtime_error("TensorRT enqueue failed");
+        {
+            NvtxRange upload("lane.h2d_enqueue");
+            checkCudaEvent(cudaEventRecord(start_event_, stream_));
+            checkCudaEvent(cudaMemcpyAsync(buffers_.raw_device(), host_raw_, raw_bytes,
+                                           cudaMemcpyHostToDevice, stream_));
+            checkCudaEvent(cudaEventRecord(h2d_event_, stream_));
         }
-        checkCudaEvent(cudaEventRecord(execute_event_, stream_));
 
-        auto* device_detections = reinterpret_cast<Detection*>(
-            static_cast<char*>(device_packet_) + sizeof(int));
-        checkCudaEvent(CudaPostprocessor::decode(
-            static_cast<const float*>(buffers_.output_device()), num_boxes_,
-            confidence_threshold, image.cols, image.rows, num_classes,
-            device_detections, static_cast<int*>(device_packet_), stream_));
+        {
+            NvtxRange preprocessing("lane.preprocess_enqueue");
+            checkCudaEvent(preprocessor_.resizeNormalize(
+                static_cast<const unsigned char*>(buffers_.raw_device()),
+                static_cast<int>(row_bytes),
+                static_cast<float*>(buffers_.input_device()), stream_));
+        }
+        {
+            NvtxRange inference("lane.trt_enqueue");
+            if (!context_->enqueueV3(stream_)) {
+                throw std::runtime_error("TensorRT enqueue failed");
+            }
+            checkCudaEvent(cudaEventRecord(execute_event_, stream_));
+        }
 
-        checkCudaEvent(cudaMemcpyAsync(host_packet_, device_packet_, packet_bytes_,
-                                       cudaMemcpyDeviceToHost, stream_));
-        checkCudaEvent(cudaEventRecord(d2h_event_, stream_));
-        checkCudaEvent(cudaEventRecord(done_event_, stream_));
+        {
+            NvtxRange postprocessing("lane.postprocess_enqueue");
+            auto* device_detections = reinterpret_cast<Detection*>(
+                static_cast<char*>(device_packet_) + sizeof(int));
+            checkCudaEvent(CudaPostprocessor::decode(
+                static_cast<const float*>(buffers_.output_device()), num_boxes_,
+                config_.confidence_threshold, image.cols, image.rows, config_.num_classes,
+                device_detections, static_cast<int*>(device_packet_), stream_));
+        }
+
+        {
+            NvtxRange download("lane.d2h_enqueue");
+            checkCudaEvent(cudaMemcpyAsync(host_packet_, device_packet_, packet_bytes_,
+                                           cudaMemcpyDeviceToHost, stream_));
+            checkCudaEvent(cudaEventRecord(d2h_event_, stream_));
+            checkCudaEvent(cudaEventRecord(done_event_, stream_));
+        }
         return true;
     } catch (...) {
         // Earlier copies/kernels may still be running; destruction waits for them.
@@ -165,6 +188,7 @@ bool lane::collect(FrameResult& result) {
     if (query() != LaneState::Ready) {
         return false;
     }
+    NvtxRange collection("lane.collect");
     const int count = *static_cast<const int*>(host_packet_);
     if (count < 0 || count > num_boxes_) {
         state_ = LaneState::Failed;

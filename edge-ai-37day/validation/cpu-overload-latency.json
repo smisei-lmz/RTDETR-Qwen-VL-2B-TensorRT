@@ -1,0 +1,18 @@
+{
+  "completed_samples": 10,
+  "warmup_removed": 0,
+  "latency_mean_ms": 73.58964,
+  "p50_ms": 63.5226,
+  "p95_ms": 78.046,
+  "p99_ms": 78.046,
+  "completion_density_per_source_second": 17.810771242016322,
+  "device_span_mean_ms": 0,
+  "stage_mean_ms": {
+    "copy_or_yuv_ms": 0,
+    "preprocess_ms": 0,
+    "inference_ms": 0,
+    "gpu_post_d2h_ms": 0,
+    "cpu_ms": 0.1734
+  },
+  "note": "device_ms is the event span including transfers/kernels, not isolated TensorRT latency; density uses source timestamps and is not a steady-state throughput measurement by itself"
+}

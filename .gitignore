@@ -56,6 +56,8 @@ compile_commands.json
 /results/**/*.png
 
 # Logs and profiler captures
+/results/profiles/
+/results/detr_closeout_*/raw/
 *.log
 *.nsys-rep
 *.ncu-rep

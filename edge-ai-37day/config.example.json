@@ -1,0 +1,22 @@
+{
+  "weights": "PekingU/rtdetr_v2_r18vd",
+  "image": null,
+  "video": null,
+  "dataset": "data/coco_eval.json",
+  "inspection_source": "data/video",
+  "workstation_roi": "0,0,1,1",
+  "occupied_s": 2.0,
+  "absent_s": 10.0,
+  "report_dir": "runs/workstation",
+  "engine": "artifacts/models/detector.plan",
+  "jetson_engine": "artifacts/jetson-models/detector.plan",
+  "vlm_model": "Qwen/Qwen2-VL-2B-Instruct",
+  "cuda_arch": "89",
+  "jetson_cuda_arch": "87",
+  "camera": "/dev/video0",
+  "camera_format": "YUYV",
+  "camera_width": 640,
+  "camera_height": 480,
+  "matrix": 601,
+  "full_range": false
+}

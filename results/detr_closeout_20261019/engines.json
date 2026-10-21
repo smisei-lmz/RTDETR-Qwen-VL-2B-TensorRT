@@ -1,0 +1,152 @@
+{
+  "fp32": {
+    "engine": "models/rtdetr-l-fp32-trt10.engine",
+    "engine_sha256": "115aebaad59b564db258bfe3e7653bf63b6a8b05e4715b76b7c2e8a9ff8bbbd2",
+    "engine_bytes": 158846252,
+    "onnx": "models/rtdetr-l-fp32.onnx",
+    "onnx_sha256": "5d2acf031772d6523c17dc71f0f865bf4af57de1a73caefb6cd29eabe5fb6e59",
+    "io": [
+      {
+        "name": "images",
+        "mode": "TensorIOMode.INPUT",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      },
+      {
+        "name": "output0",
+        "mode": "TensorIOMode.OUTPUT",
+        "shape": [
+          1,
+          300,
+          6
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      }
+    ],
+    "layer_tensor_formats": {
+      "Float": 946,
+      "Int32": 4,
+      "Int64": 2
+    },
+    "onnx_initializer_types": {
+      "FLOAT": 446
+    },
+    "precision_note": "Initializer and inspected tensor formats are evidence of mixed types; not per-instruction arithmetic precision.",
+    "build": {
+      "built_at_utc": "2026-10-19T12:33:03.989768+00:00",
+      "tensorrt": "10.13.3.9",
+      "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32.onnx",
+      "source_sha256": "5d2acf031772d6523c17dc71f0f865bf4af57de1a73caefb6cd29eabe5fb6e59",
+      "engine": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32-trt10.engine",
+      "engine_sha256": "115aebaad59b564db258bfe3e7653bf63b6a8b05e4715b76b7c2e8a9ff8bbbd2",
+      "network_creation": "STRONGLY_TYPED",
+      "profiling_verbosity": "DETAILED",
+      "precision_note": "Types follow the ONNX graph; FP32 I/O does not imply FP32 internal computation."
+    }
+  },
+  "fp16": {
+    "engine": "models/rtdetr-l-fp32mix16-trt10.engine",
+    "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+    "engine_bytes": 72154324,
+    "onnx": "models/rtdetr-l-fp32mix16.onnx",
+    "onnx_sha256": "8b5044f5bc118b5a2bc88a919eafe2ccc89ac1310aca1262bfe2a820aa12ffbe",
+    "io": [
+      {
+        "name": "images",
+        "mode": "TensorIOMode.INPUT",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      },
+      {
+        "name": "output0",
+        "mode": "TensorIOMode.OUTPUT",
+        "shape": [
+          1,
+          300,
+          6
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      }
+    ],
+    "layer_tensor_formats": {
+      "Float": 37,
+      "Half": 792,
+      "Int32": 4,
+      "Int64": 2
+    },
+    "onnx_initializer_types": {
+      "FLOAT16": 466
+    },
+    "precision_note": "Initializer and inspected tensor formats are evidence of mixed types; not per-instruction arithmetic precision.",
+    "build": {
+      "built_at_utc": "2026-10-19T12:35:18.772969+00:00",
+      "tensorrt": "10.13.3.9",
+      "source": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32mix16.onnx",
+      "source_sha256": "8b5044f5bc118b5a2bc88a919eafe2ccc89ac1310aca1262bfe2a820aa12ffbe",
+      "engine": "/home/smisei/project/RTDETR-ONNX-TensorRT/models/rtdetr-l-fp32mix16-trt10.engine",
+      "engine_sha256": "74d0efb0f25f0cca08f1c57734406c8d7417b28f10f72da113d5bfff92fe4010",
+      "network_creation": "STRONGLY_TYPED",
+      "profiling_verbosity": "DETAILED",
+      "precision_note": "Types follow the ONNX graph; FP32 I/O does not imply FP32 internal computation."
+    }
+  },
+  "int8_add6": {
+    "engine": "models/rtdetr-l-int8-box-add6-fp32.engine",
+    "engine_sha256": "85cae6fa0fb1ae8e8a466da6c5a7038179ac8aefa455a592a6db3cbf24aa7bb2",
+    "engine_bytes": 42457012,
+    "onnx": "models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx",
+    "onnx_sha256": "ae4fe7eb1fce618291e05a62fd8e6c97a5270d9b64058f2274a8851806885b61",
+    "io": [
+      {
+        "name": "images",
+        "mode": "TensorIOMode.INPUT",
+        "shape": [
+          1,
+          3,
+          640,
+          640
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      },
+      {
+        "name": "output0",
+        "mode": "TensorIOMode.OUTPUT",
+        "shape": [
+          1,
+          300,
+          6
+        ],
+        "dtype": "DataType.FLOAT",
+        "format": "Row major linear FP32 format (kLINEAR)"
+      }
+    ],
+    "layer_tensor_formats": {},
+    "onnx_initializer_types": {
+      "FLOAT": 1232,
+      "INT8": 766
+    },
+    "precision_note": "Initializer and inspected tensor formats are evidence of mixed types; not per-instruction arithmetic precision.",
+    "build": {
+      "status": "historical build provenance unavailable; source association declared by config"
+    }
+  },
+  "checkpoint": {
+    "path": "models/rtdetr-l.pt",
+    "sha256": "6de60b10d4bc566f00cda0f5b4d64afe4b66d48dc9695d2171effb7859d8e73f"
+  }
+}

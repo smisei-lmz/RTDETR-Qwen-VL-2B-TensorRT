@@ -1,0 +1,192 @@
+{
+  "python_ast_files": 68,
+  "package_xml_files": 2,
+  "daily_entrypoints": 37,
+  "handbook_excerpts": [
+    {
+      "source": "tools/course.py",
+      "line": 51,
+      "sha256": "e1ad3d4e2eed0bb237fce5842bb821aa4f0b80c6986e0c6e62632f66f98faed9"
+    },
+    {
+      "source": "tools/assets.py",
+      "line": 7,
+      "sha256": "f2bd8ef04331b9d84f2f834b16a8018eb9fcf325e9d5031e002367456985856c"
+    },
+    {
+      "source": "tools/detr_tools.py",
+      "line": 31,
+      "sha256": "86b3d5f67a58504117accf8b0e641d1bffc0a4c777ceb2157e76455f64a01564"
+    },
+    {
+      "source": "tools/detr_tools.py",
+      "line": 69,
+      "sha256": "b1005a3ee42fbb426d87d3aaba7a4c93e60d5dcc46b770aa6d664a23d216665e"
+    },
+    {
+      "source": "tools/detr_tools.py",
+      "line": 101,
+      "sha256": "da1810abf1d6663890885690594bdd8074bf61eac913cb28359dcaa75edf4a0a"
+    },
+    {
+      "source": "tools/detr_tools.py",
+      "line": 170,
+      "sha256": "afe2ffd34d86b547ff959e40d64558dd7a01442db3ef3b4ccf147b788e0a0a20"
+    },
+    {
+      "source": "pc/src/main.cpp",
+      "line": 58,
+      "sha256": "26a48177383953f1002aa9762245872634eff930362bf9d6f2467884f0d8d03c"
+    },
+    {
+      "source": "pc/src/main.cpp",
+      "line": 70,
+      "sha256": "829d01a1f3ec7d64089836aea086f857fd5610811762a417f6493840f69702cf"
+    },
+    {
+      "source": "pc/include/edge.hpp",
+      "line": 122,
+      "sha256": "20bbafd72361ceef8241cbe76136b8da5bf957f1e20b3c5109acce43cb8e5553"
+    },
+    {
+      "source": "pc/include/edge.hpp",
+      "line": 137,
+      "sha256": "80e89104a5797adcf4cb6db6708007f4fdcf71ebf57a0700a7b6a04e180ee042"
+    },
+    {
+      "source": "pc/src/main.cpp",
+      "line": 58,
+      "sha256": "26a48177383953f1002aa9762245872634eff930362bf9d6f2467884f0d8d03c"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 141,
+      "sha256": "130d6983326496770ab887018216b2325b50730d31cd4a0d0e341a9b2c38571a"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 15,
+      "sha256": "431918793b6f4364775316c5d8cc50db64ca3c2dd6a1c7667b4f06c6df8192e9"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 158,
+      "sha256": "4b19c631b7b83b69a1bbff46e79d31155c5dd96559cad0640cc731a2d851438b"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 65,
+      "sha256": "900c213d0b6e2df5e07973a9f7d847ccd458a8617b7c725daa72ba99e00585de"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 134,
+      "sha256": "5237b330a0f8638ccbbfdadb0c314e8039abb7cfa6f04867869bcf3fe0d1f8bb"
+    },
+    {
+      "source": "tools/detr_tools.py",
+      "line": 193,
+      "sha256": "d90647354919da86ea128add2e20bc5fed7b84547a7e2020ce9ea164c5b7580b"
+    },
+    {
+      "source": "tools/analyze.py",
+      "line": 7,
+      "sha256": "e4ca58e72c53b9a61170a840989d74975ad00ab4d07c0c64a22e2a553747bb94"
+    },
+    {
+      "source": "tools/assets.py",
+      "line": 36,
+      "sha256": "1a0a4f0937a77177daeff061024c07a07fc15622426c79b2437b715dfbb4187f"
+    },
+    {
+      "source": "tools/ros_basics.py",
+      "line": 9,
+      "sha256": "1a30d46a050e5709926045e8c70e81d8f39892367e80721cabdac1cb1d19ebc5"
+    },
+    {
+      "source": "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "line": 56,
+      "sha256": "b0beee76a91df5e5fa796efe87adfff5b10cf7f14c4ca2194089d4dcd0224d09"
+    },
+    {
+      "source": "ros_ws/src/edge_assistant/edge_assistant/cpp_bridge.py",
+      "line": 84,
+      "sha256": "2738c08e5beefb4921bd172c0a93dc748d087e50d74d80e4934820560c6e38b5"
+    },
+    {
+      "source": "ros_ws/src/edge_assistant/edge_assistant/vlm_server.py",
+      "line": 29,
+      "sha256": "94faec1d49304bf5221e285b46e005b3a695257dfbf4e95928488ed7de61c0ed"
+    },
+    {
+      "source": "ros_ws/src/edge_assistant/edge_assistant/backends.py",
+      "line": 61,
+      "sha256": "6b23cb29dc1624d0d8dd825dc4b7b8bf0f24eba1b6f0fbc4b633f9e3e874381e"
+    },
+    {
+      "source": "ros_ws/src/edge_assistant/edge_assistant/coordinator.py",
+      "line": 50,
+      "sha256": "8394d417fdfe3d42e15d932a6bafcd0a2a9f8fa8c16eb078fe39151eada6850e"
+    },
+    {
+      "source": "tools/ros_action_test.py",
+      "line": 33,
+      "sha256": "fcdeb9fdb2ae0bf98d7c7f3b6e3fde4fc498a9d801a86de2f2432fc35c9f68fa"
+    },
+    {
+      "source": "tests/test_project.py",
+      "line": 65,
+      "sha256": "e2ff22b0e84b95237d19aa2204f2e3fbba7fc215fabe1c6067702c3d0cf52eb1"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 250,
+      "sha256": "73044e7e9c5479138c83991825dc1ebc8a331563d992795e29a9cdd28a04af3a"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 167,
+      "sha256": "f10f49dc4855fcec2c73ce17d1f55357ad2068364f44dc22f969a9ede3131ffc"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 255,
+      "sha256": "60d4d87135e7f4b5154dbdee87569dbbbfc0ea83f097ccbe98ae7877dff9f7c8"
+    },
+    {
+      "source": "jetson/v4l2_camera.hpp",
+      "line": 25,
+      "sha256": "c1432be86ec1d265ef3d98694a8be920dd30458e6d10dea03eab5d1a66a0c701"
+    },
+    {
+      "source": "jetson/camera_run.cpp",
+      "line": 80,
+      "sha256": "ecd04695534fd275cff587c2eb5220bd672642c17dd04df03935a264a935f986"
+    },
+    {
+      "source": "jetson/v4l2_camera.hpp",
+      "line": 46,
+      "sha256": "a5a9e6bee6b533ff6cd07cad1b0d8ba0b0c95d66a2df3fe1d5617541c6fa6642"
+    },
+    {
+      "source": "pc/src/cuda_backend.cu",
+      "line": 149,
+      "sha256": "602731252426a75d109a5ab323c486a73df4fb1cfc04253c62409395d9469b92"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 272,
+      "sha256": "1309746fabc084ff3535d0bb827bc88200c9b7ad01d876a861efd6d38592a367"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 276,
+      "sha256": "c597033dda28cd2b01aa5aa7d6b080b2ab13fb922947bd80ac96dec9d560246a"
+    },
+    {
+      "source": "tools/course.py",
+      "line": 277,
+      "sha256": "dde657eae8140a58e12f2e29223cdc9bcf0bd44ece6bb0561519d818a5abd873"
+    }
+  ]
+}

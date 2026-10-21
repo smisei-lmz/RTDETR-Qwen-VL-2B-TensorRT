@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "model_family": "Ultralytics RT-DETR-L",
+  "input_shape": [1, 3, 640, 640],
+  "output_shape": [1, 300, 6],
+  "io_dtype": "float32",
+  "preprocess": "BGR uint8 -> bilinear stretch with uint8 rounding -> RGB CHW FP32 / 255; no letterbox",
+  "postprocess": "normalized cx,cy,w,h,score,COCO80 class; no extra NMS",
+  "runtime": {"lanes": 1, "confidence_threshold": 0.25, "num_classes": 80, "poll_us": 50},
+  "quality": {
+    "annotations": "ultralytics/coco/annotations/instances_val2017.json",
+    "images": "ultralytics/coco/images/val2017",
+    "evaluation_threshold": 0.001,
+    "max_detections": 100,
+    "max_map_drop_absolute": 0.01,
+    "budget_note": "Declare before this closeout run: at most 1 percentage point mAP50-95 below the same TRT10 FP32 reference."
+  },
+  "engines": {
+    "fp32": "models/rtdetr-l-fp32-trt10.engine",
+    "fp16": "models/rtdetr-l-fp32mix16-trt10.engine",
+    "int8_add6": "models/rtdetr-l-int8-box-add6-fp32.engine"
+  },
+  "onnx": {
+    "fp32": "models/rtdetr-l-fp32.onnx",
+    "fp16": "models/rtdetr-l-fp32mix16.onnx",
+    "int8_add6": "models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx"
+  },
+  "preferred_deployment": "fp16",
+  "stability": {"duration_seconds": 1800, "warmup": 30},
+  "stability_images": [
+    "ultralytics/coco/images/val2017/000000147740.jpg",
+    "ultralytics/coco/images/val2017/000000057150.jpg"
+  ]
+}

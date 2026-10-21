@@ -143,3 +143,44 @@ refined_bbox = torch.sigmoid(bbox + inverse_sigmoid(refer_bbox))
 实现使用 ModelOpt `nodes_to_exclude=[r"^/model\.28/decoder/Add(?:_[1-5])?$"]`，
 并在保存后检查、绕过这六处仍可能与其他消费者共享的输入 Q/DQ。
 重新校准路径没有在本轮完整重跑，精度应以新生成模型的 val 为准。
+
+## 六处 Add 已保护后的 Add / Mul 组合实验
+
+日期：2026-10-19。本轮基线明确是
+`models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx`，SHA256 为
+`ae4fe7eb1fce618291e05a62fd8e6c97a5270d9b64058f2274a8851806885b61`。
+基线的六处 decoder 框更新 Add 已保护；以下变化均在此基础上进行。
+
+全部模型使用同一个 seed=42 的200张图片列表、ORT后端及Ultralytics评估。
+列表与历史200张实验逐字节一致，FP32参考和当前基线本轮均重新执行。
+这组数值与4500张的C++/TensorRT COCOeval结果分别报告。
+
+| 配置 | mAP50–95 | AP50 | 相比当前六处 Add 基线 |
+| --- | ---: | ---: | ---: |
+| FP32参考 | 58.0481% | 75.3295% | — |
+| 当前六处Add保护 | 52.6874% | 72.1903% | — |
+| 再恢复所有Add的浮点输入 | 54.7449% | 73.5118% | +2.0575个百分点 |
+| 在基线上单独再恢复所有Mul | 54.3401% | 73.5676% | +1.6527个百分点 |
+| 同时恢复所有Add、Mul | 57.0800% | 74.6702% | +4.3926个百分点 |
+
+组合方案距本子集FP32参考0.9681个百分点；组合收益由实际评估得到，
+不能将两项单独收益简单相加。候选图分别额外恢复142个Add消费者、59个Mul消费者、
+以及组合的201个消费者，计算节点继续保留，修改的是其直接输入的Q/DQ连接。
+剩余初始化值逐字节相同，Conv/MatMul/Gemm的直接DQ覆盖保持一致，ONNX检查通过。
+本轮没有重新校准，没有构建新TensorRT引擎或测量这些新候选的速度。
+
+结果与图检查见 [analysis.json](runs/quant_add_mul_20261019/analysis.json)，
+基本指标见 [summary.json](runs/quant_add_mul_20261019/summary.json)，
+环境、源图/浮点图哈希及命令见 [environment.json](runs/quant_add_mul_20261019/environment.json)。
+下一步用完整验证集复核候选，再测TensorRT精度与速度；本节不能作为全量精度或190FPS的证明。
+
+复现（另选输出目录可保留本轮原始记录）：
+
+```bash
+.venv-trt10/bin/python detr_quant_sensitivity.py \
+  --source models/diagnostics/rtdetr-l-int8-box-add6-fp32.onnx \
+  --float-model models/rtdetr-l-fp32.onnx \
+  --cases runs/quant_add_mul_20261019/cases.json \
+  --directory runs/quant_add_mul_recheck \
+  --count 200 --keep-models
+```

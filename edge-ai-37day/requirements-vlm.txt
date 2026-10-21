@@ -1,0 +1,6 @@
+# Install a matching CUDA-enabled torch + torchvision pair separately first.
+# This adapter targets the documented Qwen2-VL API in this transformers release.
+transformers==4.49.0
+Pillow>=10.4,<12
+safetensors>=0.4
+numpy>=1.23,<2

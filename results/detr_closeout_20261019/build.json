@@ -1,0 +1,20 @@
+{
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+  "opencv": "4.5.4",
+  "cmake": "cmake version 3.22.1\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+  "binary_sha256": {
+    "trt_example": "4205ccce8a52de5167672c80cfb36680e589b9353b193da205807c1ed6b41e96",
+    "trt_benchmark": "5ac57fce04f5aa3a05aad2b4f698d788c43ccd53e4e10e0e62bb3849782aed67",
+    "trt_lane_check": "299023a8dabd5a31c5cf52d8f17b1db4ea211e80ddb9a2912178d93f0cc7708f",
+    "trt_lane_benchmark": "5b1575a70952c321cd8544721cb4c41ccda0d86999a7a955377068a35ea1fafd",
+    "trt_lane_validate": "add7d3ea9f382a3303761c2f817e165ab42eedcb0475a99652ab23d1c8dafb78"
+  },
+  "source_sha256": {
+    "cpp/benchmark.cpp": "89d1d2774c58080c1aca1ffd42b8b84ac049647672794efaad28e56ab9261c92",
+    "cpp/lane_benchmark.cpp": "e5abdd8ec0daaffc185f0c41bdced72af0705f4e4c9e2c3212312736e423a629",
+    "cpp/lane_check.cpp": "fd7f644f7241675d4471246c78d15103207a83af0fdc476f3f6b38b0cfca7ce9",
+    "cpp/main.cpp": "20d4d74dd0ba683a20d9db57f7784c3bf783b8bedf906365f06235eedac3cc4c"
+  },
+  "build_type": "Release",
+  "cuda_compile_option": "-arch=native; clean build performed with GPU access"
+}

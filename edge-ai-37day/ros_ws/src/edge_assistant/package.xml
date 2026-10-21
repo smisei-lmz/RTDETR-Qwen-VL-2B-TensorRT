@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>edge_assistant</name><version>0.1.0</version>
+  <description>PC perception and bounded VLM ROS2 action demo.</description>
+  <maintainer email="maintainer@example.invalid">Project maintainer</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>edge_interfaces</exec_depend>
+  <exec_depend>std_msgs</exec_depend><exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>action_msgs</exec_depend><exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend><exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

@@ -1,0 +1,294 @@
+{
+  "historical_cpu_vs_cuda": {
+    "latency_reduction_percent": 26.414054486336667,
+    "latency_speedup": 1.3589551551176595,
+    "p95_reduction_percent": 28.54552537934231,
+    "h2d_byte_reduction_percent": 81.25,
+    "h2d_time_reduction_percent": 80.45119549214189,
+    "scope": "One existing paired 200-frame fixed-image trial; input 640x480 BGR, network 640x640, batch=1; excludes decode and initialization. Combined preprocessing/transfer change, not isolated kernel-fusion benefit."
+  },
+  "lane_benchmark": {
+    "lanes": {
+      "1": {
+        "round": -1,
+        "lanes": 1,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 13845.099201,
+        "fps": 180.569309306,
+        "process_cpu_ms": 9710.031,
+        "latency_mean_ms": 5.5377155988,
+        "latency_p50_ms": 5.378448,
+        "latency_p95_ms": 6.605118,
+        "latency_p99_ms": 8.150438,
+        "fps_per_round_min": 167.764820679,
+        "fps_per_round_max": 186.116673978,
+        "process_cpu_percent": 70.13334364046064
+      },
+      "2": {
+        "round": -1,
+        "lanes": 2,
+        "submitted": 2500,
+        "completed": 2500,
+        "dropped": 0,
+        "failed": 0,
+        "wall_ms": 13894.817176,
+        "fps": 179.923202179,
+        "process_cpu_ms": 10491.564,
+        "latency_mean_ms": 11.0966173512,
+        "latency_p50_ms": 10.970688,
+        "latency_p95_ms": 12.674927,
+        "latency_p99_ms": 14.784456,
+        "fps_per_round_min": 172.35509609,
+        "fps_per_round_max": 186.711320925,
+        "process_cpu_percent": 75.50703162990649
+      }
+    },
+    "two_vs_one_fps_change_percent": -0.3578166907118763,
+    "two_vs_one_mean_latency_change_percent": 100.38257930047169,
+    "one_vs_two_p99_reduction_percent": 44.87157322528472,
+    "scope": "closed-loop fixed-image throughput; latency from submit start to collected CPU result; excludes decode, admission wait and ROS"
+  },
+  "quantization_same_subset": {
+    "images": 200,
+    "backend": "ONNX Runtime CUDA",
+    "restored_nodes": 6,
+    "before_map_percent": 43.244069202597935,
+    "after_map_percent": 52.68737015351432,
+    "improvement_percentage_points": 9.443300950916388,
+    "scope": "Fixed calibration scales, same image subset and backend; not a full-validation-set or current-engine mAP claim."
+  },
+  "traces": [
+    {
+      "path": "results/profiles/lane1_20261017.sqlite",
+      "captured_submissions": 100,
+      "main_lane_stream_ids": [
+        464
+      ],
+      "steady_range_ms": 666.708523,
+      "kernel_instances": 37800,
+      "kernels_per_frame": 378.0,
+      "kernel_union_ms": 259.769515,
+      "kernel_active_wall_percent": 38.96298097872074,
+      "kernel_or_copy_active_wall_percent": 39.986877593883705,
+      "cross_lane_kernel_overlap_ms": 0.0,
+      "cross_lane_kernel_overlap_wall_percent": 0.0,
+      "kernels_associated_with_lane": 37800,
+      "positive_post_api_gap_p50_ms": 0.338005,
+      "positive_post_api_gap_p95_ms": 1.409907,
+      "cpu_nvtx_ranges_ms": {
+        "lane.collect": 0.14192,
+        "lane.cpu_stage": 9.176639,
+        "lane.d2h_enqueue": 3.256528,
+        "lane.h2d_enqueue": 5.851805,
+        "lane.postprocess_enqueue": 1.558401,
+        "lane.preprocess_enqueue": 3.095851,
+        "lane.submit": 572.810427,
+        "lane.trt_enqueue": 549.585367
+      },
+      "steady_cuda_allocation_or_free_calls": 0,
+      "largest_runtime_api_totals": [
+        {
+          "name": "cuLaunchKernelEx",
+          "calls": 33200,
+          "total_ms": 334.831699
+        },
+        {
+          "name": "cudaLaunchKernel_v7000",
+          "calls": 3100,
+          "total_ms": 36.760465
+        },
+        {
+          "name": "cuLaunchKernel",
+          "calls": 1500,
+          "total_ms": 23.620728
+        },
+        {
+          "name": "cudaEventRecord_v3020",
+          "calls": 500,
+          "total_ms": 5.724764
+        },
+        {
+          "name": "cuEventRecord",
+          "calls": 5400,
+          "total_ms": 5.011586
+        },
+        {
+          "name": "cuStreamWaitEvent",
+          "calls": 5900,
+          "total_ms": 4.654642
+        },
+        {
+          "name": "cudaMemcpyAsync_v3020",
+          "calls": 200,
+          "total_ms": 4.002056
+        },
+        {
+          "name": "cudaEventQuery_v3020",
+          "calls": 1480,
+          "total_ms": 2.986673
+        }
+      ],
+      "largest_kernel_groups": [
+        {
+          "name": "__myl_DivMulMulMinMaxRounCastT_87...",
+          "instances": 600,
+          "summed_gpu_ms": 22.779977
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm__47...",
+          "instances": 600,
+          "summed_gpu_ms": 12.131746
+        },
+        {
+          "name": "sm80_xmma_gemm_i8i8_i8i32_f32__66...",
+          "instances": 700,
+          "summed_gpu_ms": 12.055077
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm__51...",
+          "instances": 200,
+          "summed_gpu_ms": 11.870952
+        },
+        {
+          "name": "__myl_CastMulAddReshTranReshMo_86...",
+          "instances": 600,
+          "summed_gpu_ms": 10.079214
+        },
+        {
+          "name": "permutationKernelPLC3",
+          "instances": 1300,
+          "summed_gpu_ms": 9.132703
+        },
+        {
+          "name": "sm80_xmma_fprop_avdt_dense_int_5...",
+          "instances": 500,
+          "summed_gpu_ms": 7.626685
+        },
+        {
+          "name": "__myl_Topk_0x46004755f860a677c_102...",
+          "instances": 100,
+          "summed_gpu_ms": 7.50536
+        }
+      ],
+      "scope": "Profiler timings are diagnostic only. Kernel coverage is not SM utilization. Cross-lane overlap groups auxiliary kernels by the enclosing host submission and its H2D main stream; it does not count same-lane auxiliary overlap."
+    },
+    {
+      "path": "results/profiles/lane2_20261017.sqlite",
+      "captured_submissions": 100,
+      "main_lane_stream_ids": [
+        464,
+        912
+      ],
+      "steady_range_ms": 573.597967,
+      "kernel_instances": 37800,
+      "kernels_per_frame": 378.0,
+      "kernel_union_ms": 260.551464,
+      "kernel_active_wall_percent": 45.42405639314269,
+      "kernel_or_copy_active_wall_percent": 46.61211151049983,
+      "cross_lane_kernel_overlap_ms": 0.0,
+      "cross_lane_kernel_overlap_wall_percent": 0.0,
+      "kernels_associated_with_lane": 37800,
+      "positive_post_api_gap_p50_ms": 4.930761,
+      "positive_post_api_gap_p95_ms": 6.480448,
+      "cpu_nvtx_ranges_ms": {
+        "lane.collect": 0.132457,
+        "lane.cpu_stage": 8.772627,
+        "lane.d2h_enqueue": 3.484163,
+        "lane.h2d_enqueue": 4.155862,
+        "lane.postprocess_enqueue": 1.564658,
+        "lane.preprocess_enqueue": 2.372659,
+        "lane.submit": 545.081895,
+        "lane.trt_enqueue": 524.412397
+      },
+      "steady_cuda_allocation_or_free_calls": 0,
+      "largest_runtime_api_totals": [
+        {
+          "name": "cuLaunchKernelEx",
+          "calls": 33200,
+          "total_ms": 314.855029
+        },
+        {
+          "name": "cudaLaunchKernel_v7000",
+          "calls": 3100,
+          "total_ms": 32.853013
+        },
+        {
+          "name": "cuLaunchKernel",
+          "calls": 1500,
+          "total_ms": 27.145031
+        },
+        {
+          "name": "cuEventRecord",
+          "calls": 5400,
+          "total_ms": 5.320302
+        },
+        {
+          "name": "cudaEventRecord_v3020",
+          "calls": 500,
+          "total_ms": 4.529188
+        },
+        {
+          "name": "cuStreamWaitEvent",
+          "calls": 5900,
+          "total_ms": 4.504268
+        },
+        {
+          "name": "cudaMemcpyAsync_v3020",
+          "calls": 200,
+          "total_ms": 3.364265
+        },
+        {
+          "name": "cudaEventQuery_v3020",
+          "calls": 930,
+          "total_ms": 1.212812
+        }
+      ],
+      "largest_kernel_groups": [
+        {
+          "name": "__myl_DivMulMulMinMaxRounCastT_87...",
+          "instances": 600,
+          "summed_gpu_ms": 22.423555
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm__47...",
+          "instances": 600,
+          "summed_gpu_ms": 12.404533
+        },
+        {
+          "name": "sm80_xmma_gemm_i8i8_i8i32_f32__66...",
+          "instances": 700,
+          "summed_gpu_ms": 12.051799
+        },
+        {
+          "name": "sm80_xmma_fprop_implicit_gemm__51...",
+          "instances": 200,
+          "summed_gpu_ms": 11.479072
+        },
+        {
+          "name": "__myl_CastMulAddReshTranReshMo_86...",
+          "instances": 600,
+          "summed_gpu_ms": 10.344642
+        },
+        {
+          "name": "permutationKernelPLC3",
+          "instances": 1300,
+          "summed_gpu_ms": 9.114787
+        },
+        {
+          "name": "__myl_Topk_0x46004755f860a677c_102...",
+          "instances": 100,
+          "summed_gpu_ms": 8.19246
+        },
+        {
+          "name": "sm80_xmma_fprop_avdt_dense_int_5...",
+          "instances": 500,
+          "summed_gpu_ms": 7.636545
+        }
+      ],
+      "scope": "Profiler timings are diagnostic only. Kernel coverage is not SM utilization. Cross-lane overlap groups auxiliary kernels by the enclosing host submission and its H2D main stream; it does not count same-lane auxiliary overlap."
+    }
+  ]
+}

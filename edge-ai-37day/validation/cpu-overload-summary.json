@@ -1,0 +1,12 @@
+{
+  "generated": 120,
+  "completed": 10,
+  "drop_oldest": 110,
+  "drop_no_slot": 0,
+  "queue_highwater": 2,
+  "all_slots_free": true,
+  "elapsed_s": 0.630503,
+  "latency_p50_ms": 63.5226,
+  "latency_p95_ms": 78.046,
+  "latency_p99_ms": 78.046
+}

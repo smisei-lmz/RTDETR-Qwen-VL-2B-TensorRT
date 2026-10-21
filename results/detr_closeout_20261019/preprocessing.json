@@ -1,0 +1,105 @@
+{
+  "engine": "models/rtdetr-l-fp32mix16-trt10.engine",
+  "image": "ultralytics/coco/images/val2017/000000147740.jpg",
+  "width": 640,
+  "height": 480,
+  "opencv_version": "4.5.4",
+  "opencv_threads": 1,
+  "cpu_preprocess": "OpenCV resize+cvtColor+convertTo+split",
+  "cpu_staging": 0,
+  "iterations_per_mode": 200,
+  "warmup_per_mode": 30,
+  "lanes": 1,
+  "h2d_cpu_bytes": 4915200,
+  "h2d_cuda_bytes": 921600,
+  "d2h_cpu_bytes": 7200,
+  "d2h_cuda_bytes": 7204,
+  "input_max_abs": 5.96046448e-08,
+  "output_max_abs": 0,
+  "postprocess_box_max_abs": 0,
+  "detections": 21,
+  "cpu": {
+    "cpu_prepare": {
+      "mean_ms": 1.94237154,
+      "median_ms": 1.690108,
+      "p95_ms": 3.176439
+    },
+    "h2d": {
+      "mean_ms": 0.40603776,
+      "median_ms": 0.36289601,
+      "p95_ms": 0.58288002
+    },
+    "gpu_pre": {
+      "mean_ms": 0,
+      "median_ms": 0,
+      "p95_ms": 0
+    },
+    "infer": {
+      "mean_ms": 8.85425169,
+      "median_ms": 8.79409599,
+      "p95_ms": 10.0635204
+    },
+    "gpu_post": {
+      "mean_ms": 0,
+      "median_ms": 0,
+      "p95_ms": 0
+    },
+    "d2h": {
+      "mean_ms": 0.0597278401,
+      "median_ms": 0.0568480007,
+      "p95_ms": 0.0756160021
+    },
+    "cpu_post": {
+      "mean_ms": 0.002948515,
+      "median_ms": 0.00216,
+      "p95_ms": 0.00779
+    },
+    "total": {
+      "mean_ms": 11.4110427,
+      "median_ms": 11.133215,
+      "p95_ms": 13.37569
+    }
+  },
+  "cuda": {
+    "cpu_prepare": {
+      "mean_ms": 0.152004435,
+      "median_ms": 0.115646,
+      "p95_ms": 0.218322
+    },
+    "h2d": {
+      "mean_ms": 0.0815628796,
+      "median_ms": 0.0687360018,
+      "p95_ms": 0.157120004
+    },
+    "gpu_pre": {
+      "mean_ms": 0.15724912,
+      "median_ms": 0.147135995,
+      "p95_ms": 0.245471999
+    },
+    "infer": {
+      "mean_ms": 8.71875261,
+      "median_ms": 8.62443161,
+      "p95_ms": 10.2574396
+    },
+    "gpu_post": {
+      "mean_ms": 0.00656848004,
+      "median_ms": 0.00409599999,
+      "p95_ms": 0.0064960001
+    },
+    "d2h": {
+      "mean_ms": 0.0619876801,
+      "median_ms": 0.0596639998,
+      "p95_ms": 0.0800319985
+    },
+    "cpu_post": {
+      "mean_ms": 0.0009112,
+      "median_ms": 0.000775,
+      "p95_ms": 0.00163
+    },
+    "total": {
+      "mean_ms": 9.31943494,
+      "median_ms": 9.149605,
+      "p95_ms": 10.913777
+    }
+  }
+}

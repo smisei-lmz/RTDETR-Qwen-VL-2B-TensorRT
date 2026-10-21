@@ -1,0 +1,134 @@
+{
+  "scope": "same seed42 200-image subset, ONNX Runtime + Ultralytics; not 4500-image COCOeval or TensorRT accuracy",
+  "baseline": "six decoder box-update Add inputs already restored before this experiment",
+  "recalibrated": false,
+  "results": [
+    {
+      "map": 0.5804810360033543,
+      "map50": 0.7532952921115735,
+      "precision": 0.7451592370388046,
+      "recall": 0.6889626411308293,
+      "speed": {
+        "preprocess": 0.6256398550249287,
+        "inference": 26.8044649899457,
+        "loss": 0.007819684979040176,
+        "postprocess": 0.9565100351392175
+      },
+      "name": "reference_fp32",
+      "restored_nodes": 0,
+      "gain_from_current_percentage_points": 5.360733446821109,
+      "gap_to_fp32_percentage_points": 0.0
+    },
+    {
+      "map": 0.5268737015351432,
+      "map50": 0.7219028462571149,
+      "precision": 0.755038142685251,
+      "recall": 0.6466010813854145,
+      "speed": {
+        "preprocess": 0.5647356999179465,
+        "inference": 69.09254763493664,
+        "loss": 0.006238165187824052,
+        "postprocess": 0.8481749146812945
+      },
+      "name": "current_box_add6",
+      "restored_nodes": 0,
+      "gain_from_current_percentage_points": 0.0,
+      "gap_to_fp32_percentage_points": 5.360733446821109
+    },
+    {
+      "map": 0.5474490807266161,
+      "map50": 0.7351183501838296,
+      "precision": 0.7506935212985626,
+      "recall": 0.6695451932660835,
+      "speed": {
+        "preprocess": 0.5839893052689149,
+        "inference": 65.43049385491031,
+        "loss": 0.006864945426059421,
+        "postprocess": 0.9356457746616798
+      },
+      "name": "all_Add_fp32",
+      "restored_nodes": 142,
+      "gain_from_current_percentage_points": 2.05753791914729,
+      "gap_to_fp32_percentage_points": 3.303195527673819
+    },
+    {
+      "map": 0.54340092524806,
+      "map50": 0.7356762415690244,
+      "precision": 0.7716292393860027,
+      "recall": 0.6542318311615409,
+      "speed": {
+        "preprocess": 0.5804997051745886,
+        "inference": 64.04753487029666,
+        "loss": 0.006593560137844179,
+        "postprocess": 0.8669108548201621
+      },
+      "name": "all_Mul_fp32",
+      "restored_nodes": 59,
+      "gain_from_current_percentage_points": 1.6527223712916816,
+      "gap_to_fp32_percentage_points": 3.708011075529427
+    },
+    {
+      "map": 0.5707998776798638,
+      "map50": 0.7467023992846781,
+      "precision": 0.7668747835199393,
+      "recall": 0.6740069209872608,
+      "speed": {
+        "preprocess": 0.6246448896854417,
+        "inference": 60.805600449602935,
+        "loss": 0.006718035074300133,
+        "postprocess": 0.8643046347424388
+      },
+      "name": "all_Add_Mul_fp32",
+      "restored_nodes": 201,
+      "gain_from_current_percentage_points": 4.39261761447206,
+      "gap_to_fp32_percentage_points": 0.968115832349048
+    }
+  ],
+  "candidate_graph_checks": {
+    "all_Add_fp32": {
+      "path": "runs/quant_add_mul_20261019/all_Add_fp32.onnx",
+      "sha256": "5c1a80dec4b882bf39cbd319a8812f1f33924e308de80eb60a460fc40ec7c3b9",
+      "restored_consumers": 142,
+      "direct_dq_consumers": {
+        "Add": 0,
+        "Mul": 59,
+        "Conv": 110,
+        "MatMul": 96,
+        "Gemm": 7
+      },
+      "retained_initializers_unchanged": true,
+      "onnx_checker_passed": true
+    },
+    "all_Mul_fp32": {
+      "path": "runs/quant_add_mul_20261019/all_Mul_fp32.onnx",
+      "sha256": "4dde09f4cc516f36984cf7d14175cf00b63a1ee59889408aa44bd352e00c1a97",
+      "restored_consumers": 59,
+      "direct_dq_consumers": {
+        "Add": 142,
+        "Mul": 0,
+        "Conv": 110,
+        "MatMul": 96,
+        "Gemm": 7
+      },
+      "retained_initializers_unchanged": true,
+      "onnx_checker_passed": true
+    },
+    "all_Add_Mul_fp32": {
+      "path": "runs/quant_add_mul_20261019/all_Add_Mul_fp32.onnx",
+      "sha256": "8327c59dbb59a8999a8be96cac1ff81027fc617b0c565361dd6fe45425722799",
+      "restored_consumers": 201,
+      "direct_dq_consumers": {
+        "Add": 0,
+        "Mul": 0,
+        "Conv": 110,
+        "MatMul": 96,
+        "Gemm": 7
+      },
+      "retained_initializers_unchanged": true,
+      "onnx_checker_passed": true
+    }
+  },
+  "image_list_sha256": "ad43579e524eec6659494f53c75e459510c00139e04a73a168a6c235b33249cb",
+  "image_list_matches_previous_experiments": true,
+  "tensorrt_built_or_benchmarked": false
+}
